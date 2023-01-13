@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+
 # 顧客用
 devise_for :customers,skip: [:passwords], controllers: {
   registrations: "public/registrations",
@@ -10,7 +11,19 @@ devise_for :customers,skip: [:passwords], controllers: {
 devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
   sessions: "admin/sessions"
 }
-  #get 'test/index'
-  root 'test#index'
+
+  scope module: :public do
+    root to:"homes#top"
+    resources:genres, only: [:index, :show]
+    resources:articles, only: [:index, :show]
+    resources:customers, only: [:index, :show]
+end
+
+  namespace :admin do
+    resources:genres, only: [:index, :show]
+    resources:articles, only: [:index, :show]
+    resources:customers, only: [:index, :show]
+    end
+
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
