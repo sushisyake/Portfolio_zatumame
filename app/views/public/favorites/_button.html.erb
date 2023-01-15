@@ -1,0 +1,9 @@
+<% if article.favorited_by?(current_customer) %>
+    <%= link_to article_favorites_path(article), remote:true, method: :delete do %>
+      ♥<%= article.favorites.count %>
+    <% end %>
+  <% else %>
+    <%= link_to article_favorites_path(article), remote:true, method: :post do %>
+      ♡<%= article.favorites.count %>
+  <% end %>
+<% end %>

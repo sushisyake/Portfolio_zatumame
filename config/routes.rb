@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
 
 
+  namespace :public do
+    get 'favorites/create'
+    get 'favorites/destroy'
+  end
 # 顧客用
 devise_for :customers,skip: [:passwords], controllers: {
   registrations: "public/registrations",
@@ -17,6 +21,7 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
     resources:genres, only: [:index, :show]
     resources:articles, only: [:index, :show, :new, :create]
     resources:customers, only: [:index, :show]
+    resources:favorites, only: [:create, :destroy]
 end
 
   namespace :admin do
