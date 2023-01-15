@@ -13,6 +13,8 @@
   <body>
     <header>
       <%= link_to "ログアウト", destroy_customer_session_path, method: :delete %>
+       <%= link_to "投稿", new_article_path %>
+       <%= link_to "一覧", articles_path %>
     </header>
     <%= yield %>
   </body>

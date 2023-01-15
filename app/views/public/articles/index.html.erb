@@ -1,2 +1,22 @@
-<h1>Public::Articles#index</h1>
-<p>Find me in app/views/public/articles/index.html.erb</p>
+
+<div class="row d-flex mt-5 ">
+  <div class="col-1"></div>
+
+    <div class="col-8">
+      <div class="d-flex">
+        <p style="font-size:35px">投稿一覧</p>
+        <p style="font-size:25px; line-height: 2;">(全<%= @articles.count %>件)</p>
+      </div>
+
+      <div class=" articles_width">
+        <% @articles.each do |article| %>
+          <div class="mx-3 my-3">
+            <%= link_to article_path(article) do %>
+            <%= article.question %><br>
+            <% end %><br>
+
+          </div>
+        <% end %>
+      </div>
+    </div>
+</div>
