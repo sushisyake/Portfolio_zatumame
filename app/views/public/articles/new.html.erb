@@ -1,2 +1,8 @@
-<h1>Public::Articles#new</h1>
-<p>Find me in app/views/public/articles/new.html.erb</p>
+<h1>画像投稿フォーム</h1>
+  <%= form_with model: @article, url:articles_path, method: :post do |f| %>
+    <h4>問題</h4>
+      <%= f.text_field :question %>
+    <h4>答え</h4>
+      <%= f.text_area :answer %>
+    <%= f.submit '投稿' %>
+  <% end %>
