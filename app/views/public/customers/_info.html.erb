@@ -1,0 +1,33 @@
+<table class='table'>
+  <tbody>
+
+  <tr>
+	  <th>name</th>
+	  <th><%= customer.last_name %></th>
+  </tr>
+  <tr>
+	  <th>introduction</th>
+	  <th><%= customer.introduction %></th>
+  </tr>
+  <tr>
+   <th>follows</th>
+   <th><%= link_to customer_followings_path(customer) do %><%= customer.followings.count %><% end %></th>
+  </tr>
+  <tr>
+    <th>followers</th>
+    <th><%= link_to customer_followers_path(customer) do %><%= customer.followers.count %><% end %></th>
+  </tr>
+  <tr><th><% if current_customer.following?(customer) %>
+                <%= link_to "フォロー外す", customer_relationships_path(customer.id), method: :delete,class: "btn btn-sm btn-info" %>
+              <% else %>
+                <%= link_to "フォローする", customer_relationships_path(customer.id), method: :post,class: "btn btn-sm btn-success" %>
+              <% end %></th>
+  </tr>
+  </tbody>
+</table>
+
+<div class='row'>
+  <%= link_to edit_customer_path(customer), class: "btn btn-outline-secondary btn-block" do %>
+    <i class="fas fa-customer-cog"></i>
+  <% end %>
+</div>
