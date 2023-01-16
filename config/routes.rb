@@ -19,9 +19,10 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
   scope module: :public do
     root to:"homes#top"
     resources:genres, only: [:index, :show]
-    resources:articles, only: [:index, :show, :new, :create]
+    resources:articles, only: [:index, :show, :new, :create] do
+      resource:favorites, only: [:create, :destroy]
+    end
     resources:customers, only: [:index, :show]
-    resources:favorites, only: [:create, :destroy]
 end
 
   namespace :admin do
