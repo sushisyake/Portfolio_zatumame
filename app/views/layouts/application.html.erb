@@ -15,6 +15,7 @@
       <%= link_to "ログアウト", destroy_customer_session_path, method: :delete %>
        <%= link_to "投稿", new_article_path %>
        <%= link_to "一覧", articles_path %>
+       <%= link_to "マイページ", customer_path(current_customer)  %>
     </header>
     <%= yield %>
   </body>
