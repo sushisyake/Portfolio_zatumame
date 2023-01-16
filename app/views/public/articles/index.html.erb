@@ -15,7 +15,7 @@
             <%= article.question %><br>
             <% end %><br>
             <div class = "favorite-btn-<%= article.id %>">
-            <%= render 'public/favorites/button', article: @article %>
+            <%= render 'public/favorites/button', article: article %>
           </div>
         <% end %>
       </div>
