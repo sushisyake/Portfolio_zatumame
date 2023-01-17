@@ -3,6 +3,11 @@ class Public::ArticlesController < ApplicationController
   before_action :authenticate_customer!
   before_action :ensure_correct_customer, only: [:edit, :update, :destroy]
 
+  def show
+    @article = Article.find(params[:id])
+    @article_comment = ArticleComment.new
+  end
+
   def new
     @article = Article.new
   end

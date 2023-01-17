@@ -1,2 +1,38 @@
-<h1>Public::Articles#show</h1>
-<p>Find me in app/views/public/articles/show.html.erb</p>
+<div class='container'>
+  <div class='row'>
+    <div class='col-md-3'>
+      <h2>customer info</h2>
+      <%= render 'public/customers/info', customer: @article.customer %>
+    </div>
+    <div class='col-md-8 offset-md-1'>
+  		<h2>article detail</h2>
+  		<table class='table'>
+  		  <tr>
+          <td><%= link_to(@article.customer) do %>
+            <%= @article.customer.nickname %>
+            <% end %>
+          </td>
+          <td><%= link_to @article.question, @article %></td>
+          <td><%= @article.answer %></td>
+          <td><div class = "favorite-btn-<%= @article.id %>">
+            <%= render 'public/favorites/button', article: @article %></div>
+          </td>
+          <td>
+            コメント件数：<%= @article.article_comments.count %>
+          </td>
+
+          <% if @article.customer == current_customer %>
+            <td><%= link_to 'Edit', edit_article_path(@article), class: "btn btn-sm btn-success" %></td>
+            <td><%= link_to 'Destroy', @article, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger"%></td>
+          <% end %>
+        </tr>
+      </table>
+      <table>
+        <tr><td>
+          <div id =  "com-field" ><%= render 'public/article_comments/article-com', article: @article %></div></td>
+        </tr>
+          <%= render 'public/article_comments/article-com-new', article: @article, article_comment: @article_comment %>
+      </table>
+    </div>
+  </div>
+</div>
