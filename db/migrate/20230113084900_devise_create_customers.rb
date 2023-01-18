@@ -33,10 +33,6 @@ class DeviseCreateCustomers < ActiveRecord::Migration[6.1]
       # t.datetime :locked_at
 
        # カラムを追記
-      t.string :last_name ,null: false
-      t.string :first_name,null: false
-      t.string :last_name_kana,null: false
-      t.string :first_name_kana,null: false
       t.string :nickname, null: false
       t.string :introduction
       t.boolean :is_deleted,null: false, default: "false"

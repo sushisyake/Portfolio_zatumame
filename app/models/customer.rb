@@ -15,12 +15,7 @@ class Customer < ApplicationRecord
   has_many :followings, through: :relationships, source: :followed
   has_many :followers, through: :reverse_of_relationships, source: :follower
 
-  validates :last_name, length: { maximum: 10 }, presence: true
-  validates :first_name, length: { maximum: 10 }, presence: true
-  validates :last_name_kana, length: { maximum: 10 }, presence: true
-  validates :first_name_kana, length: { maximum: 10 }, presence: true
-  validates :nickname, length: { maximum: 10 }, uniqueness: true, presence: true
-  validates :introduction, length: { maximum: 100 }
+  validates :nickname, length: { maximum: 20 }, uniqueness: true, presence: true
 
     # フォローしたときの処理
   def follow(customer_id)
@@ -34,6 +29,14 @@ class Customer < ApplicationRecord
   # フォローしているか判定
   def following?(customer)
     followings.include?(customer)
+  end
+
+  # ゲストログインに関するメソッド
+  def self.guest
+    find_or_create_by!(nickname: 'guestcustomer' ,email: 'guest@example.com') do |customer|
+      customer.password = SecureRandom.urlsafe_base64
+      customer.nickname = "guestcustomer"
+    end
   end
 
 end

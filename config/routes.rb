@@ -16,8 +16,13 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
   sessions: "admin/sessions"
 }
 
+  devise_scope :customer do
+    post 'customers/guest_sign_in', to: 'public/sessions#guest_sign_in'
+  end
+
   scope module: :public do
     root to:"homes#top"
+    # post 'customers/guest_sign_in', to: 'sessions#guest_sign_in'
     resources:genres, only: [:index, :show]
     resources:customers, only: [:edit, :index, :show] do
       resource :relationships, only: [:create, :destroy]
