@@ -19,16 +19,15 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
   scope module: :public do
     root to:"homes#top"
     resources:genres, only: [:index, :show]
-    resources:articles, only: [:index, :show, :new, :create]
     resources:customers, only: [:edit, :index, :show] do
       resource :relationships, only: [:create, :destroy]
   	get 'followings' => 'relationships#followings', as: 'followings'
   	get 'followers' => 'relationships#followers', as: 'followers'
   	end
-    resources:articles, only: [:index, :show, :new, :create] do
+    resources:articles do
       resource:favorites, only: [:create, :destroy]
+      resources :article_comments, only: [:create,:destroy]
     end
-    resources:customers, only: [:index, :show]
 end
 
   namespace :admin do
