@@ -2,9 +2,9 @@
 
 class Public::SessionsController < Devise::SessionsController
   def guest_sign_in
-    customer = Customer.guest
-    sign_in customer
-    redirect_to customer_path(customer), notice: 'guestcustomerでログインしました。'
+    user = User.guest
+    sign_in user
+    redirect_to user_path(user), notice: 'guestuserでログインしました。'
   end
   # before_action :configure_sign_in_params, only: [:create]
 

@@ -1,7 +1,7 @@
 class Public::ArticlesController < ApplicationController
 
-  before_action :authenticate_customer!
-  before_action :ensure_correct_customer, only: [:edit, :update, :destroy]
+  before_action :authenticate_user!
+  before_action :ensure_correct_user, only: [:edit, :update, :destroy]
 
   def show
     @article = Article.find(params[:id])
@@ -19,7 +19,7 @@ class Public::ArticlesController < ApplicationController
 
   def create
     @article = Article.new(article_params)
-    @article.customer_id = current_customer.id
+    @article.user_id = current_user.id
     @article.genre_id = 1122
     if @article.save
       redirect_to article_path(@article), notice: "You have created article successfully."
@@ -35,9 +35,9 @@ class Public::ArticlesController < ApplicationController
     params.require(:article).permit(:question, :answer)
   end
 
-  def ensure_correct_customer
+  def ensure_correct_user
     @article = Article.find(params[:id])
-    unless @article.customer == current_customer
+    unless @article.user == current_user
       redirect_to articles_path
     end
   end

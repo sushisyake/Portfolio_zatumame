@@ -1,15 +1,15 @@
 <div class='container'>
   <div class='row'>
     <div class='col-md-3'>
-      <h2>customer info</h2>
-      <%= render 'public/customers/info', customer: @article.customer %>
+      <h2>user info</h2>
+      <%= render 'public/users/info', user: @article.user %>
     </div>
     <div class='col-md-8 offset-md-1'>
   		<h2>article detail</h2>
   		<table class='table'>
   		  <tr>
-          <td><%= link_to(@article.customer) do %>
-            <%= @article.customer.nickname %>
+          <td><%= link_to(@article.user) do %>
+            <%= @article.user.nickname %>
             <% end %>
           </td>
           <td><%= link_to @article.question, @article %></td>
@@ -21,7 +21,7 @@
             コメント件数：<%= @article.article_comments.count %>
           </td>
 
-          <% if @article.customer == current_customer %>
+          <% if @article.user == current_user %>
             <td><%= link_to 'Edit', edit_article_path(@article), class: "btn btn-sm btn-success" %></td>
             <td><%= link_to 'Destroy', @article, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger"%></td>
           <% end %>

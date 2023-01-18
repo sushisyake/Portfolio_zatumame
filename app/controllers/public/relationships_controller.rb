@@ -1,24 +1,24 @@
 class Public::RelationshipsController < ApplicationController
-  before_action :authenticate_customer!
+  before_action :authenticate_user!
   def create
-    customer = Customer.find(params[:customer_id])
-    current_customer.follow(customer.id)
+    user = User.find(params[:user_id])
+    current_user.follow(user.id)
 		redirect_to request.referer
   end
 
   def destroy
-    customer = Customer.find(params[:customer_id])
-    current_customer.unfollow(customer)
+    user = User.find(params[:user_id])
+    current_user.unfollow(user)
 		redirect_to request.referer
   end
 
   def followings
-    customer = Customer.find(params[:customer_id])
-		@customers = customer.followings
+    user = User.find(params[:user_id])
+		@users = user.followings
   end
 
   def followers
-    customer = Customer.find(params[:customer_id])
-		@customers = customer.followers
+    user = User.find(params[:user_id])
+		@users = user.followers
   end
 end

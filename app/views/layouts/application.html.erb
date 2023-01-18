@@ -12,13 +12,13 @@
 
   <body>
     <header>
-    <% if customer_signed_in? %>
-      <%= link_to "ログアウト", destroy_customer_session_path, method: :delete %>
+    <% if user_signed_in? %>
+      <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
        <%= link_to "投稿", new_article_path %>
        <%= link_to "一覧", articles_path %>
-       <%= link_to "マイページ", customer_path(current_customer)  %>
+       <%= link_to "マイページ", user_path(current_user)  %>
     <% else %>
-      <%= link_to "ログアウト", destroy_customer_session_path, method: :delete %>
+      <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
        <%= link_to "投稿", new_article_path %>
        <%= link_to "一覧", articles_path %>
     <% end %>
