@@ -3,7 +3,7 @@
 
   <tr>
 	  <th>name</th>
-	  <th><%= customer.last_name %></th>
+	  <th><%= customer.nickname %></th>
   </tr>
   <tr>
 	  <th>introduction</th>
@@ -25,6 +25,11 @@
   </tr>
   </tbody>
 </table>
+<% if customer.nickname != "guestcustomer" %>
+<div class='row'>
+  <%= link_to '',edit_customer_path(customer),class: "btn btn-outline-secondary btn-block fas fa-customer-cog edit_customer_#{customer.id}" %>
+</div>
+<% end %>
 
 <div class='row'>
   <%= link_to edit_customer_path(customer), class: "btn btn-outline-secondary btn-block" do %>
