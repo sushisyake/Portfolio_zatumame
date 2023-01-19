@@ -14,24 +14,6 @@
  <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
    <%= render "public/shared/error_messages", resource: resource %>
      <div class="field d-flex">
-      <dt>名前</dt>
-      <dd>
-       <%= f.label :"(姓)" %>
-       <%= f.text_field :last_name, autofocus: true %>
-       <%= f.label :"(名)" %>
-       <%= f.text_field :first_name, autofocus: true %>
-      </dd>
-     </div>
-     <div class="field d-flex">
-      <dt>フリガナ</dt>
-      <dd>
-       <%= f.label :"(セイ)"%>
-       <%= f.text_field :last_name_kana, autofocus: true %>
-       <%= f.label :"(メイ)" %>
-       <%= f.text_field :first_name_kana, autofocus: true %>
-      </dd>
-     </div>
-     <div class="field d-flex">
       <dt><%= f.label :"メールアドレス" %></dt>
       <dd><%= f.email_field :email, autofocus: true %></dd>
      </div>

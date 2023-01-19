@@ -4,8 +4,8 @@
     <h2>user info</h2>
     <%= form_with model:@user, local:true do |f| %>
       <div class="form-group">
-        <%= f.label :last_name %>
-        <%= f.text_field :last_name, class: "form-control name" %>
+        <%= f.label :nickname %>
+        <%= f.text_field :nickname, class: "form-control name" %>
       </div>
       <div class="form-group">
         <%= f.label :introduction %>
@@ -23,7 +23,7 @@
     <% @users.each do |user| %>
     <tbody>
       <tr>
-        <td><%= user.last_name %></td>
+        <td><%= user.nickname %></td>
         <td><% if current_user.following?(user) %>
                 <%= link_to "フォロー外す", user_relationships_path(user.id), method: :delete %>
               <% else %>
