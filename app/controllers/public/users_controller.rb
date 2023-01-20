@@ -20,13 +20,18 @@ class Public::UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
+    if @user.nickname == "guestuser"
+      flash[:notice] = "ゲストはニックネームを変更できません"
+      redirect_to request.referer and return
+    end
     @user.update(user_params)
-    # if @user.save
-    #   flash[:notice] = "You have updated user successfully."
-    #   redirect_to user_path(@user)
-    # else
-    #   render :edit
-    # end
+    if @user.save
+      flash[:notice] = "ニックネームが変更されました"
+      redirect_to request.referer
+    else
+      flash[:notice] = "ニックネームを入力してください。"
+      redirect_to request.referer
+    end
   end
 
   private
