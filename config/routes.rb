@@ -2,6 +2,9 @@ Rails.application.routes.draw do
 
 
   namespace :admin do
+    get 'homes/top'
+  end
+  namespace :admin do
     get 'user/index'
     get 'user/show'
   end
@@ -22,7 +25,6 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
 
   scope module: :public do
     root to:"homes#top"
-    # post 'users/guest_sign_in', to: 'sessions#guest_sign_in'
     resources:genres, only: [:index, :show]
     resources:users, only: [:edit, :index, :show] do
       resource :relationships, only: [:create, :destroy]
@@ -36,9 +38,13 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
 end
 
   namespace :admin do
+    root to:'homes#top'
     resources:genres, only: [:index, :show]
-    resources:articles, only: [:index, :show]
+    resources:articles, only: [:index, :show, :edit] do
+      resources :article_comments, only: [:create,:destroy]
+    end
     resources:users, only: [:edit, :index, :show]
+
     end
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

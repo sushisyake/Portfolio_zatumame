@@ -26,14 +26,14 @@ ActiveRecord::Schema.define(version: 2023_01_18_121339) do
 
   create_table "article_comments", force: :cascade do |t|
     t.text "comment"
-    t.integer "customer_id"
+    t.integer "user_id"
     t.integer "article_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "articles", force: :cascade do |t|
-    t.integer "customer_id", null: false
+    t.integer "user_id", null: false
     t.integer "genre_id", null: false
     t.string "question", null: false
     t.string "answer", null: false
@@ -42,7 +42,7 @@ ActiveRecord::Schema.define(version: 2023_01_18_121339) do
   end
 
   create_table "favorites", force: :cascade do |t|
-    t.integer "customer_id"
+    t.integer "user_id"
     t.integer "article_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

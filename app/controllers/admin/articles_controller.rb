@@ -1,10 +1,13 @@
 class Admin::ArticlesController < ApplicationController
-  def index
-  end
 
   def show
+    @article = Article.find(params[:id])
+    @article_comment = ArticleComment.new
   end
 
-  def edit
+  def index
+    @articles = Article.all
+    @article = Article.new
   end
+
 end

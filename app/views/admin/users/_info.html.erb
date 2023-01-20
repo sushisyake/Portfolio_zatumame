@@ -1,0 +1,33 @@
+Admin
+<table class='table'>
+  <tbody>
+
+  <tr>
+	  <th>name</th>
+	  <th><%= user.nickname %></th>
+  </tr>
+  <tr>
+	  <th>introduction</th>
+	  <th><%= user.introduction %></th>
+  </tr>
+  <tr>
+   <th>follows</th>
+   <th><%= link_to user_followings_path(user) do %><%= user.followings.count %><% end %></th>
+  </tr>
+  <tr>
+    <th>followers</th>
+    <th><%= link_to user_followers_path(user) do %><%= user.followers.count %><% end %></th>
+  </tr>
+  </tbody>
+</table>
+<% if user.nickname != "guestuser" %>
+<div class='row'>
+  <%= link_to '',edit_user_path(user),class: "btn btn-outline-secondary btn-block fas fa-user-cog edit_user_#{user.id}" %>
+</div>
+<% end %>
+
+<div class='row'>
+  <%= link_to edit_user_path(user), class: "btn btn-outline-secondary btn-block" do %>
+    <i class="fas fa-user-cog"></i>
+  <% end %>
+</div>
