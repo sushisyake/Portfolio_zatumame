@@ -33,6 +33,18 @@ class Public::UsersController < ApplicationController
       redirect_to request.referer
     end
   end
+  
+  def confirm
+    @user = current_user
+  end
+
+  def exit
+    @user = current_user
+    @user.update(is_deleted: true)
+    reset_session
+    flash[:notice] = "退会しました。またのご利用をお待ちしております。"
+    redirect_to root_path
+  end
 
   private
 

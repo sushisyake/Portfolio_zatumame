@@ -1,0 +1,18 @@
+<div class="container py-5">
+  <div class="row my-5 d-flex mx-auto">
+    <div class="col-md-12 mb-3 text-center">
+      <h4>本当に退会しますか？</h4>
+    </div>
+    <div class="col-md-12 mb-3 text-center">
+      <p>
+        退会すると、会員情報や<br>
+        これまでの購入履歴が閲覧できなくなります。<br>
+        退会する場合は、「退会する」をクリックしてください。
+      </p>
+    </div>
+    <div class="col-md-12 text-center">
+      <%= link_to "退会しない", user_path(@user), class:"col-md-2 btn btn-primary mr-4" %>
+      <%= link_to "退会する", exit_path(@user), class:"col-md-2 btn btn-danger", method: :patch, "data-confirm" => "本当に退会しますか？"  %>
+    </div>
+  </div>
+</div>
