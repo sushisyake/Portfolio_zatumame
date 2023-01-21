@@ -20,8 +20,8 @@ class Public::ArticlesController < ApplicationController
   def create
     @article = Article.new(article_params)
     @article.user_id = current_user.id
-    @article.genre_id = 1122
-    if @article.save
+    #@article.genre_id = 1122
+    if @article.save!
       redirect_to article_path(@article), notice: "You have created article successfully."
     else
       @articles = Article.all
@@ -32,7 +32,7 @@ class Public::ArticlesController < ApplicationController
   private
 
   def article_params
-    params.require(:article).permit(:question, :answer)
+    params.require(:article).permit(:question, :answer, :genre_id)
   end
 
   def ensure_correct_user

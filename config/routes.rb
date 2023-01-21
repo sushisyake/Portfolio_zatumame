@@ -33,8 +33,8 @@ end
 
   namespace :admin do
     root to:'homes#top'
-    resources:users, only: [:edit, :index, :show, :update]
-    resources:genres, only: [:index, :show]
+    resources:users, only: [:edit, :index, :update]
+    resources:genres, only: [:index, :create, :edit, :update]
     resources:articles, only: [:index, :show, :edit] do
       resources :article_comments, only: [:create,:destroy]
     end

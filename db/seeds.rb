@@ -8,3 +8,31 @@
 
 # 管理者のアカウント
 Admin.create!( email: "ad@ad", password: "qazpl,")
+
+  5.times do |n|
+    User.create!(
+      email: "test#{n + 1}@a",
+      nickname: "テスト#{n + 1}",
+      password: 'qazpl,',
+    )
+  end
+  
+  Genre.create(
+  [
+    {
+      name: '掃除'
+    },
+    {
+      name: '料理'
+    },
+    {
+      name: 'スマホ'
+    },
+    {
+      name: '雑学'
+    },
+    {
+      name: 'その他'
+    }
+  ]
+)
