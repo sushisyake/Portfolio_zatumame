@@ -1,13 +1,5 @@
 Rails.application.routes.draw do
 
-
-  namespace :admin do
-    get 'homes/top'
-  end
-  namespace :admin do
-    get 'user/index'
-    get 'user/show'
-  end
 # 顧客用
 devise_for :users,skip: [:passwords], controllers: {
   registrations: "public/registrations",
@@ -41,13 +33,12 @@ end
 
   namespace :admin do
     root to:'homes#top'
+    resources:users, only: [:edit, :index, :show, :update]
     resources:genres, only: [:index, :show]
     resources:articles, only: [:index, :show, :edit] do
       resources :article_comments, only: [:create,:destroy]
     end
-    resources:users, only: [:edit, :index, :show]
-
-    end
+  end
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
