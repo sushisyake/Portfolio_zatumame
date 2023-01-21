@@ -34,7 +34,7 @@ ActiveRecord::Schema.define(version: 2023_01_18_121339) do
 
   create_table "articles", force: :cascade do |t|
     t.integer "user_id", null: false
-    t.integer "genre_id", null: false
+    t.integer "genre_id"
     t.string "question", null: false
     t.string "answer", null: false
     t.datetime "created_at", precision: 6, null: false
@@ -49,6 +49,7 @@ ActiveRecord::Schema.define(version: 2023_01_18_121339) do
   end
 
   create_table "genres", force: :cascade do |t|
+    t.string "name", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
