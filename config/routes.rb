@@ -22,6 +22,9 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
       resource :relationships, only: [:create, :destroy]
   	get 'followings' => 'relationships#followings', as: 'followings'
   	get 'followers' => 'relationships#followers', as: 'followers'
+  	  member do
+        get :favorites
+      end
   	end
     resources:articles do
       resource:favorites, only: [:create, :destroy]

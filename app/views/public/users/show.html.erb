@@ -4,6 +4,7 @@
       <h2>user info</h2>
       <%= render 'info', user: @user %>
        <%= link_to "退会する", confirm_path(@user), class:"btn btn-danger col-sm-3 offset-md-2" %>
+       <%=link_to"お気に入り記事",favorites_user_path(@user) %>
     </div>
   </div>
 </div>

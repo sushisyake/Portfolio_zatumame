@@ -45,6 +45,12 @@ class Public::UsersController < ApplicationController
     flash[:notice] = "退会しました。またのご利用をお待ちしております。"
     redirect_to root_path
   end
+  
+  def favorites
+    @user = User.find(params[:id])
+    favorites = Favorite.where(user_id: @user.id).pluck(:article_id)
+    @favorite_articles = Article.find(favorites)
+  end
 
   private
 

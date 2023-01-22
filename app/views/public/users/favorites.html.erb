@@ -1,0 +1,4 @@
+いいね一覧
+<% @favorite_articles.each do |article|%>
+  <%= link_to article.question, article_path(article) %>
+<% end %>
