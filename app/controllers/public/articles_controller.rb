@@ -15,6 +15,21 @@ class Public::ArticlesController < ApplicationController
   def index
     @articles = Article.all
     @article = Article.new
+
+    if params[:tag_ids]
+      @articles = []
+      params[:tag_ids].each do |key, value|
+        if value == "1"
+          tag_articles = Tag.find_by(name: key).articles
+          @articles = @articles.empty? ? tag_articles : @articles & tag_articles
+        end
+      end
+    end
+
+    if params[:tag]
+      Tag.create(name: params[:tag])
+    end
+
   end
 
   def create
@@ -32,7 +47,7 @@ class Public::ArticlesController < ApplicationController
   private
 
   def article_params
-    params.require(:article).permit(:question, :answer, :genre_id)
+    params.require(:article).permit(:question, :answer, :genre_id, tag_ids: [])
   end
 
   def ensure_correct_user
@@ -41,4 +56,5 @@ class Public::ArticlesController < ApplicationController
       redirect_to articles_path
     end
   end
+
 end

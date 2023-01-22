@@ -27,6 +27,9 @@
           <% end %>
         </tr>
       </table>
+      <% @article.tags.each do |tag| %>
+        <span><%= tag.name %></span>
+      <% end %>
       <table>
         <tr><td>
           <div id =  "com-field" ><%= render 'public/article_comments/article-com', article: @article %></div></td>
