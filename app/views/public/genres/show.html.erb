@@ -1,0 +1,22 @@
+<div class="article-index-box">
+
+    <!-- ジャンル選択のサイドバー -->
+    <%#= render "articles/genres_sidebar", genres: @genres %>
+    <!-- ジャンル選択のサイドバー -->
+    <div class="article-index">
+    <h3><%= @genre.name %></h3>
+        <table>
+          <tbody>
+            <tr class="article-box">
+              <% @genre.articles.each do |article| %>
+                <td class="article">
+                    <%= link_to article_path(article) do %>
+                      <%= article.question %><br>
+                    <% end %>
+                </td>
+              <% end %>
+            </tr>
+          </tbody>
+        </table>
+    </div>
+</div>
