@@ -3,6 +3,7 @@ class Article < ApplicationRecord
   belongs_to :user
   belongs_to :genre, optional: true
   has_many :favorites, dependent: :destroy
+  has_many :unfavorites, dependent: :destroy
   has_many :article_comments, dependent: :destroy
    #articlesテーブルから中間テーブルに対する関連付け
   has_many :article_tag_relations, dependent: :destroy
@@ -13,6 +14,10 @@ class Article < ApplicationRecord
 
   def favorited_by?(user)
     favorites.where(user_id: user.id).exists?
+  end
+
+  def unfavorited_by?(user)
+    unfavorites.where(user_id: user.id).exists?
   end
 
 end

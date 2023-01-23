@@ -16,6 +16,8 @@
           <td><%= @article.answer %></td>
           <td><div class = "favorite-btn-<%= @article.id %>">
             <%= render 'public/favorites/button', article: @article %></div>
+          <td><div class = "unfavorite-btn-<%= @article.id %>">
+            <%= render 'public/unfavorites/button', article: @article %></div>
           </td>
           <td>
             コメント件数：<%= @article.article_comments.count %>

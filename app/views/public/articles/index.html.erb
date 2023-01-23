@@ -29,6 +29,9 @@
             <% end %><br>
             <div class = "favorite-btn-<%= article.id %>">
             <%= render 'public/favorites/button', article: article %>
+            <div class = "unfavorite-btn-<%= article.id %>">
+            <%= render 'public/unfavorites/button', article: article %>
+
           </div>
         <% end %>
       </div>

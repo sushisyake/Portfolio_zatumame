@@ -28,6 +28,7 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
   	end
     resources:articles do
       resource:favorites, only: [:create, :destroy]
+      resource:unfavorites, only: [:create, :destroy]
       resources :article_comments, only: [:create,:destroy]
     end
      get "users/confirm/:id"=>"users#confirm", as: :confirm

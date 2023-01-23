@@ -10,6 +10,12 @@ class Public::ArticlesController < ApplicationController
 
   def new
     @article = Article.new
+
+    if params[:tag]
+      Tag.create(name: params[:tag])
+      render :new
+    end
+
   end
 
   def index
@@ -24,10 +30,6 @@ class Public::ArticlesController < ApplicationController
           @articles = @articles.empty? ? tag_articles : @articles & tag_articles
         end
       end
-    end
-
-    if params[:tag]
-      Tag.create(name: params[:tag])
     end
 
   end

@@ -51,6 +51,12 @@ class Public::UsersController < ApplicationController
     favorites = Favorite.where(user_id: @user.id).pluck(:article_id)
     @favorite_articles = Article.find(favorites)
   end
+  
+  def unfavorites
+    @user = User.find(params[:id])
+    unfavorites = Unfavorite.where(user_id: @user.id).pluck(:article_id)
+    @unfavorite_articles = Article.find(unfavorites)
+  end
 
   private
 

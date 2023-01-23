@@ -6,7 +6,7 @@
       <%= f.text_area :answer %>
     <h4>ジャンル</h4>
       <%= f.collection_select :genre_id, Genre.all, :id, :name, include_blank: "選択してください" %>
-      
+
     <div class='form-group'>
         <%= f.collection_check_boxes(:tag_ids, Tag.all, :id, :name) do |tag| %>
             <div class='form-check'>
@@ -17,6 +17,17 @@
             </div>
         <% end %>
     </div>
-    
+
+
+
+
     <%= f.submit '投稿' %>
   <% end %>
+
+
+<!-- 以下を追記 -->
+<%= form_tag({controller:"articles",action:"new"}, method: :get) do %>
+    <%= text_field_tag :tag %>
+    <%= submit_tag 'タグを追加' %>
+<% end %>
+<!-- ここまで -->
