@@ -5,6 +5,7 @@
     <div class="col-8">
       <div class="d-flex">
         <p style="font-size:35px">投稿一覧</p>
+<%= render 'public/searches/search' %>
 
 <%= form_tag({controller:"articles",action:"index"}, method: :get) do %>
     <% Tag.all.each do |t| %>

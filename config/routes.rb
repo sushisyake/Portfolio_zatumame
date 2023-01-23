@@ -33,6 +33,7 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
     end
      get "users/confirm/:id"=>"users#confirm", as: :confirm
      patch "users/exit/:id"=>"users#exit", as: :exit
+     get "search" => "searches#search"
 end
 
   namespace :admin do
