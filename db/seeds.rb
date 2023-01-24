@@ -7,7 +7,7 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 # 管理者のアカウント
-Admin.create!( email: "ad@ad", password: "qazpl,")
+Admin.create!( email: ENV['ADMIN_EMAIL'], password: ENV['ADMIN_PASSWORD'])
 
   5.times do |n|
     User.create!(
