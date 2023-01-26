@@ -14,6 +14,7 @@
     <%= submit_tag '検索' %>
 <% end %>
 
+<%= render 'public/genres/search', genres: @genres %>
 
 
         <p style="font-size:25px; line-height: 2;">(全<%= @articles.count %>件)</p>

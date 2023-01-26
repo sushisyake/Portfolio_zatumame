@@ -22,6 +22,7 @@ class Public::ArticlesController < ApplicationController
   def index
     @articles = Article.all
     @article = Article.new
+    @genres = Genre.all
 
     if params[:tag_ids]
       @articles = []
