@@ -4,7 +4,7 @@
       <%= f.text_field :question %>
     <h4>答え</h4>
       <%= f.text_area :answer %>
-    <h4>ジャンル</h4>
+    <!--<h4>ジャンル</h4>-->
       <%#= f.collection_select :genre_id, Genre.all, :id, :name, include_blank: "選択してください" %>
       <%= f.hidden_field :genre_id, :value => "楽しいRuby" %>
 
