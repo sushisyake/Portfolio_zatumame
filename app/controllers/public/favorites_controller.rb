@@ -1,4 +1,6 @@
 class Public::FavoritesController < ApplicationController
+  before_action :ensure_guest_user
+
   def create
     article = Article.find(params[:article_id])
     @favorite = current_user.favorites.new(article_id: article.id)
@@ -12,4 +14,12 @@ class Public::FavoritesController < ApplicationController
     @favorite.destroy
     redirect_to request.referer
   end
+
+  def ensure_guest_user
+    @user = current_user
+    if @user.nickname == "guestuser"
+      redirect_to request.referer , notice: 'ゲストは投稿を評価できません。'
+    end
+  end
+
 end

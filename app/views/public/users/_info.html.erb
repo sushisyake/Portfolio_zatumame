@@ -1,7 +1,6 @@
 <table class='table'>
   <tbody>
     <tr><th>
-      <%= flash[:notice] %>
     <% if user.id == current_user.id %>
     <%= form_with model: user, local:true do |f| %>
         <%= f.label :nickname %>
@@ -33,4 +32,3 @@
     </tr>
     </tbody>
   </table>
-  

@@ -1,5 +1,7 @@
 class Public::RelationshipsController < ApplicationController
   before_action :authenticate_user!
+  before_action :ensure_guest_user
+  
   def create
     user = User.find(params[:user_id])
     current_user.follow(user.id)
@@ -21,4 +23,12 @@ class Public::RelationshipsController < ApplicationController
     user = User.find(params[:user_id])
 		@users = user.followers
   end
+  
+  def ensure_guest_user
+    @user = current_user
+    if @user.nickname == "guestuser"
+      redirect_to request.referer , notice: 'ゲストはユーザーをフォローできません。'
+    end
+  end
+  
 end

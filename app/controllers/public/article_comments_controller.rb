@@ -1,4 +1,5 @@
 class Public::ArticleCommentsController < ApplicationController
+  before_action :ensure_guest_user
 
   def create
     article = Article.find(params[:article_id])
@@ -18,4 +19,12 @@ class Public::ArticleCommentsController < ApplicationController
   def article_comment_params
     params.require(:article_comment).permit(:comment)
   end
+
+  def ensure_guest_user
+    @user = current_user
+    if @user.nickname == "guestuser"
+      redirect_to article_path , notice: 'ゲストユーザーはコメントできません。'
+    end
+  end
+
 end

@@ -2,6 +2,7 @@ class Public::ArticlesController < ApplicationController
 
   before_action :authenticate_user!
   before_action :ensure_correct_user, only: [:edit, :update, :destroy]
+  before_action :ensure_guest_user, only: [:new]
 
   def show
     @article = Article.find(params[:id])
@@ -9,7 +10,7 @@ class Public::ArticlesController < ApplicationController
   end
 
   def new
-    @article = Article.new
+    @article = Article.new(article_params)
 
     if params[:tag]
       Tag.create(name: params[:tag])
@@ -56,6 +57,13 @@ class Public::ArticlesController < ApplicationController
     @article = Article.find(params[:id])
     unless @article.user == current_user
       redirect_to articles_path
+    end
+  end
+
+    def ensure_guest_user
+    @user = current_user
+    if @user.nickname == "guestuser"
+      redirect_to articles_path , notice: 'ゲストは投稿できません。'
     end
   end
 
