@@ -31,9 +31,9 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
       resource:unfavorites, only: [:create, :destroy]
       resources :article_comments, only: [:create,:destroy]
     end
-     get "users/confirm/:id"=>"users#confirm", as: :confirm
-     patch "users/exit/:id"=>"users#exit", as: :exit
-     get "search" => "searches#search"
+    get "users/confirm/:id"=>"users#confirm", as: :confirm
+    patch "users/exit/:id"=>"users#exit", as: :exit
+    get "search" => "searches#search"
 end
 
   namespace :admin do

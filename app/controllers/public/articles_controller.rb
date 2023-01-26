@@ -10,7 +10,7 @@ class Public::ArticlesController < ApplicationController
   end
 
   def new
-    @article = Article.new(article_params)
+    @article = Article.new
 
     if params[:tag]
       Tag.create(name: params[:tag])
@@ -60,7 +60,7 @@ class Public::ArticlesController < ApplicationController
     end
   end
 
-    def ensure_guest_user
+  def ensure_guest_user
     @user = current_user
     if @user.nickname == "guestuser"
       redirect_to articles_path , notice: 'ゲストは投稿できません。'

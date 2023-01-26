@@ -14,10 +14,6 @@
     <%= submit_tag '検索' %>
 <% end %>
 
-<%= form_tag({controller:"articles",action:"index"}, method: :get) do %>
-    <%= text_field_tag :tag %>
-    <%= submit_tag 'タグを追加' %>
-<% end %>
 
 
         <p style="font-size:25px; line-height: 2;">(全<%= @articles.count %>件)</p>

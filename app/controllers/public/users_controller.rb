@@ -1,6 +1,6 @@
 class Public::UsersController < ApplicationController
   before_action :is_matching_login_user, only: [:edit, :update]
-   before_action :ensure_guest_user, only: [:edit]
+   before_action :ensure_guest_user, only: [:edit, :confirm]
 
   def show
     @user = User.find(params[:id])
@@ -12,10 +12,6 @@ class Public::UsersController < ApplicationController
     @users = User.all
     @article = Article.new
 
-  end
-
-  def edit
-    @user = User.find(params[:id])
   end
 
   def update
@@ -33,7 +29,7 @@ class Public::UsersController < ApplicationController
       redirect_to request.referer
     end
   end
-  
+
   def confirm
     @user = current_user
   end
@@ -45,13 +41,13 @@ class Public::UsersController < ApplicationController
     flash[:notice] = "退会しました。またのご利用をお待ちしております。"
     redirect_to root_path
   end
-  
+
   def favorites
     @user = User.find(params[:id])
     favorites = Favorite.where(user_id: @user.id).pluck(:article_id)
     @favorite_articles = Article.find(favorites)
   end
-  
+
   def unfavorites
     @user = User.find(params[:id])
     unfavorites = Unfavorite.where(user_id: @user.id).pluck(:article_id)
@@ -75,7 +71,7 @@ class Public::UsersController < ApplicationController
   def ensure_guest_user
     @user = User.find(params[:id])
     if @user.nickname == "guestuser"
-      redirect_to user_path(current_user) , notice: 'ゲストユーザーはプロフィール編集画面へ遷移できません。'
+      redirect_to user_path(current_user) , notice: 'プロフィール編集と退会はできません。'
     end
   end
 
