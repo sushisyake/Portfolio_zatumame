@@ -6,7 +6,7 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-# 管理者のアカウント
+管理者のアカウント
 Admin.create!( email: ENV['ADMIN_EMAIL'], password: ENV['ADMIN_PASSWORD'])
 
   5.times do |n|
@@ -16,7 +16,7 @@ Admin.create!( email: ENV['ADMIN_EMAIL'], password: ENV['ADMIN_PASSWORD'])
       password: 'qazpl,',
     )
   end
-  
+
   Genre.create(
   [
     {
@@ -37,10 +37,10 @@ Admin.create!( email: ENV['ADMIN_EMAIL'], password: ENV['ADMIN_PASSWORD'])
   ]
 )
 
-Tag.create([
-  { name: 'タグ1' },
-  { name: 'タグ2' },
-  { name: 'タグ3' },
-  { name: 'タグ4' },
-  { name: 'タグ5' }
-])
+# Tag.create([
+#   { name: 'タグ1' },
+#   { name: 'タグ2' },
+#   { name: 'タグ3' },
+#   { name: 'タグ4' },
+#   { name: 'タグ5' }
+# ])
