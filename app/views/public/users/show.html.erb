@@ -2,7 +2,25 @@
   <div class='row'>
     <div class='col-md-3'>
       <h2>user info</h2>
+      
+      
       <%= render 'info', user: @user %>
+      
+      
+             <% @articles.each do |article| %>
+          <div class="mx-3 my-3">
+            <%= link_to article_path(article) do %>
+            <%= article.question %><br>
+            <% end %><br>
+            <div class = "favorite-btn-<%= article.id %>">
+            <%= render 'public/favorites/button', article: article %>
+            <div class = "unfavorite-btn-<%= article.id %>">
+            <%= render 'public/unfavorites/button', article: article %>
+
+          </div>
+        <% end %>
+        
+        
        <%= link_to "退会する", confirm_path(@user), class:"btn btn-danger col-sm-3 offset-md-2" %>
        <%=link_to"お気に入り記事",favorites_user_path(@user) %>
     </div>

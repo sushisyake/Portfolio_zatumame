@@ -1,0 +1,23 @@
+<% if users.exists? %>
+  <table class='table'>
+    <thead>
+      <tr>
+        <th>name</th>
+        <th colspan="4"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% users.each do |user| %>
+        <tr>
+          <td><%= link_to user do %>
+                <%= user.nickname %>
+              <% end %></td>
+          <td>フォロー数: <%= user.followings.count %></td>
+          <td>フォロワー数: <%= user.followers.count %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% else %>
+  <p>ユーザーはいません</p>
+<% end %>

@@ -35,6 +35,9 @@
           <li class="nav-item my-2 mx-3 h5">
             <%= link_to "マイページ", user_path(current_user)  %>
           </li>
+          <li class="nav-item my-2 mx-3 h5">
+            <%= link_to "ユーザー", users_path  %>
+          </li>
         <% elsif admin_signed_in? %>
           <li class="nav-item my-2 mx-3 h5">
             <%= link_to "商品一覧", admin_articles_path %>
@@ -50,6 +53,9 @@
           </li>
           <li class="nav-item my-2 mx-3 h5">
             <%= link_to "ログアウト", destroy_admin_session_path, method: :delete %>
+          </li>
+          <li class="nav-item my-2 mx-3 h5">
+            <%= link_to "ユーザー", users_path  %>
           </li>
         <% else %>
           <li class="nav-item my-2 mx-3 h5">
