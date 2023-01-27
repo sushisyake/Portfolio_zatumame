@@ -1,36 +1,33 @@
-
-<div class="row d-flex mt-5 ">
-  <div class="col-1"></div>
-
-    <div class="col-8">
-      <div class="d-flex">
-        <p style="font-size:35px">投稿一覧</p>
-
-<%= form_tag({controller:"articles",action:"index"}, method: :get) do %>
+<div class='container'>
+<div class='row'>
+<div class='col-md-3'>
+  <h2>タグ検索</h2>
+  <div class='border'>
+  <%= form_tag({controller:"articles",action:"index"}, method: :get) do %>
     <% Tag.all.each do |t| %>
         <ul><%= check_box :tag_ids, t.name %><%= t.name %></ul>
     <% end %>
     <%= submit_tag '検索' %>
-<% end %>
+  </div>
+  <% end %>
 
-<%= render 'public/genres/search', genres: @genres %>
+  <%= render 'public/genres/search', genres: @genres %>
+</div>
 
-
-        <p style="font-size:25px; line-height: 2;">(全<%= @articles.count %>件)</p>
-      </div>
-      <div class=" articles_width">
-        <% @articles.each do |article| %>
+<div class='col-md-8 offset-md-1'>
+ <% @articles.each do |article| %>
           <div class="mx-3 my-3">
             <%= link_to article_path(article) do %>
-            <%= article.question %><br>
-            <% end %><br>
-            <div class = "favorite-btn-<%= article.id %>">
-            <%= render 'public/favorites/button', article: article %>
-            <div class = "unfavorite-btn-<%= article.id %>">
-            <%= render 'public/unfavorites/button', article: article %>
+            <%= article.question %>
+            <% end %>
+            <div class = "d-flex justify-content-end">
+              <%= render 'public/favorites/button', article: article %>
+              <%= render 'public/unfavorites/button', article: article %>
+            </div>
 
           </div>
         <% end %>
-      </div>
+        <p style="font-size:15px; line-height: 2;">(全<%= @articles.count %>件)</p>
     </div>
+  </div>
 </div>

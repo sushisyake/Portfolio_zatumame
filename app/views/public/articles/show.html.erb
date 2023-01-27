@@ -12,6 +12,7 @@
             <%= @article.user.nickname %>
             <% end %>
           </td>
+          <td><%= @article.genre.name %></td>
           <td><%= link_to @article.question, @article %></td>
           <td><%= @article.answer %></td>
           <td><div class = "favorite-btn-<%= @article.id %>">

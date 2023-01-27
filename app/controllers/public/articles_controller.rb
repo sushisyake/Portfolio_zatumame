@@ -44,7 +44,7 @@ class Public::ArticlesController < ApplicationController
       redirect_to article_path(@article), notice: "You have created article successfully."
     else
       @articles = Article.all
-      render 'new'
+      render 'new', notice: "You have created article successfully."
     end
   end
 
