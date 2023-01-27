@@ -1,13 +1,28 @@
-<h1>Public::Homes#top</h1>
-<p>Find me in app/views/public/homes/top.html.erb</p>
-   <div class="btn-wrapper col-10 mx-auto">
-        <div class="row">
-          <%= link_to 'ゲストログイン（閲覧用）', users_guest_sign_in_path, class: "btn btn-secondary btn-sm btn-block mb-3 sign_in", method: :post %>
-        </div>
-        <div class="row">
-          <%= link_to 'Log in',new_user_session_path, class: "btn btn-info btn-sm btn-block mb-3 sign_in" %>
-        </div>
-        <div class="row">
-          <%= link_to 'Sign Up',new_user_registration_path, class: "btn btn-success btn-sm btn-block sign_up" %>
+<div class="container">
+  <div class="row mt-5">
+
+    <!--トップ画像-->
+    <div class="col-md-9">
+      <div class="col-md-10 text-center">
+        <div class="card-img-overlay pt-1">
+          <div class="background">
+            <p class="shadow-lg font-weight-bold">
+              ようこそ、ながのCAKEへ！<br>
+              このサイトは、ケーキ販売のECサイトになります。<br>
+              会員でない方も商品の閲覧はできますが、<br>
+              購入には会員登録が必要になります。<br>
+            </p>
+          </div>
         </div>
       </div>
+
+      <h3 class="my-3">新着商品</h3>
+      <!--販売中の新着商品-->
+      <div class="d-flex flex-row-reverse mt-2">
+        <%= link_to "全ての商品を見る >", articles_path %>
+      </div>
+
+    </div>
+  </div>
+
+</div>
