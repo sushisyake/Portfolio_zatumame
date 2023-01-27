@@ -1,20 +1,24 @@
-<div class='container px-5 px-sm-0'>
-  <div class='row'>
-    <div class='col-md-7'>
-      <h2>users</h2>
-    <% @users.each do |user| %>
-    <tbody>
+
+
+  <table class='table w-75 mx-auto '>
+    <thead>
       <tr>
-        <td><%= user.nickname %></td>
-        <td><% if current_user.following?(user) %>
+        <th>name</th>
+        <th>intro</th>
+        <th colspan="4"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @users.each do |user| %>
+        <tr>
+          <td><%= link_to user.nickname, user %></td>
+          <td><%= truncate(user.introduction, length:30) %></td>
+          <td><% if current_user.following?(user) %>
                 フォロー中
               <% else %>
                 未フォロー
               <% end %></td>
-        <td><%= link_to 'Show', user %></td>
-      </tr>
+        </tr>
+      <% end %>
     </tbody>
-    <% end %>
-    </div>
-  </div>
-</div>
+  </table>

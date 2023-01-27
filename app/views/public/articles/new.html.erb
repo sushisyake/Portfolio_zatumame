@@ -1,33 +1,54 @@
-<h1>画像投稿フォーム</h1>
-  <%= form_with model: @article, url:articles_path, method: :post do |f| %>
-    <h4>問題</h4>
-      <%= f.text_field :question %>
-    <h4>答え</h4>
-      <%= f.text_area :answer %>
-    <h4>ジャンル</h4>
-      <%= f.collection_select :genre_id, Genre.all, :id, :name, include_blank: "選択してください" %>
-
-    <div class='form-group'>
-        <%= f.collection_check_boxes(:tag_ids, Tag.all, :id, :name) do |tag| %>
-            <div class='form-check'>
-                <%= tag.label class: 'form-check-label' do %>
-                    <%= tag.check_box class: 'form-check-input' %>
-                    <%= tag.text %>
-                <% end %>
-            </div>
-        <% end %>
-    </div>
-
-
-
-
-    <%= f.submit '投稿' %>
+<div class = "mx-auto">
+  <h1>画像投稿フォーム</h1>
+  <%= form_tag({controller:"articles",action:"new"}, method: :get) do %>
+      <%= text_field_tag :tag %>
+      <%= submit_tag 'タグを追加' %>
   <% end %>
+    <div class="container">
+      <div class="panel panel-default">
+        <div class="panel-heading">フォーム1</div>
+        <div class="panel-body">
+          <form>
+            <%= form_with model: @article, url:articles_path, method: :post do |f| %>
+            <div class="form-group">
+              <label class="control-label">項目1</label>
+                <p> <%= f.collection_check_boxes(:tag_ids, Tag.all, :id, :name) do |tag| %>
+                  <div class='form-check'>
+                    <%= tag.label class: 'form-check-label' do %>
+                      <%= tag.check_box class: 'form-check-input' %>
+                      <%= tag.text %>
+                    <% end %>
+                  </div>
+                  <% end %>
+                </p>
+            </div>
+            <div class="form-group">
+              <label class="control-label">項目1</label>
+              <p><%= f.text_field :question %></p>
+            </div>
+            <div class="form-group">
+              <label class="control-label">項目1</label>
+              <p><%= f.text_area :answer %></p>
+            </div>
+            <div class="form-group">
+              <label class="control-label">項目1</label>
+              <p><%= f.collection_select :genre_id, Genre.all, :id, :name, include_blank: "選択してください" %></p>
+            </div>
+            <div>
+              <%= f.submit '投稿' %>
+            </div>
+            <% end %>
+          </form>
+        </div>
+      </div>
+    </div>
+</div>
+
+
+
+
 
 
 <!-- 以下を追記 -->
-<%= form_tag({controller:"articles",action:"new"}, method: :get) do %>
-    <%= text_field_tag :tag %>
-    <%= submit_tag 'タグを追加' %>
-<% end %>
+
 <!-- ここまで -->
