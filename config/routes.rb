@@ -26,7 +26,7 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
         get :favorites
       end
   	end
-    resources:articles do
+    resources:articles, except: [:edit, :update]  do
       resource:favorites, only: [:create, :destroy]
       resource:unfavorites, only: [:create, :destroy]
       resources :article_comments, only: [:create,:destroy]
@@ -34,7 +34,7 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
     get "users/confirm/:id"=>"users#confirm", as: :confirm
     patch "users/exit/:id"=>"users#exit", as: :exit
     get "search" => "searches#search"
-end
+  end
 
   namespace :admin do
     root to:'homes#top'

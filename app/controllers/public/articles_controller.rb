@@ -32,7 +32,7 @@ class Public::ArticlesController < ApplicationController
   end
 
   def index
-    @articles = Article.all
+    @articles = Article.all.page(params[:page])
     @genres = Genre.all
 
     if params[:tag_ids]

@@ -32,6 +32,8 @@
 
           </tr>
         <% end %>
+
+        <tr style="font-size:15px; line-height: 2;"><td><%= paginate @articles %></td></tr>
         <tr style="font-size:15px; line-height: 2;"><td>(全<%= @articles.count %>件)</td></tr>
     </table>
   </div>
