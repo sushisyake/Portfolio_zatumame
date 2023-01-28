@@ -1,33 +1,52 @@
+<div class="d-flex justify-content-end mt-3 mr-5">
+  <%= render 'public/searches/search' %>
+</div>
 <div class='container'>
   <div class='row'>
     <div class='col-md-3'>
-      <h2>user info</h2>
-      <%= render 'public/users/info', user: @article.user %>
+      <h2>タグ検索</h2>
+      <%= form_tag({controller:"articles",action:"index"}, method: :get) do %>
+        <div class="d-flex flex-row flex-wrap">
+          <% Tag.all.each do |t| %>
+            <div>
+              <%= check_box :tag_ids, t.name %><%= t.name %>(<%= t.articles.count %>)
+            </div>
+          <% end %>
+        </div>
+        <%= submit_tag '検索' %>
+      <% end %>
+
+      <%= render 'public/genres/search', genres: @genres %>
     </div>
     <div class='col-md-8 offset-md-1'>
-  		<h2>article detail</h2>
+  		<h2>投稿</h2>
   		<table class='table'>
   		  <tr>
+  		    <td><%= link_to @article.question, @article %></td>
+          <td><%= @article.genre.name %></td>
+          <td><% @article.tags.each do |tag| %>
+                <%= tag.name %>
+              <% end %>
+          </td>
           <td><%= link_to(@article.user) do %>
             <%= @article.user.nickname %>
             <% end %>
           </td>
-          <td><%= @article.genre.name %></td>
-          <td><%= link_to @article.question, @article %></td>
-          <td><%= @article.answer %></td>
           <td><div class = "favorite-btn-<%= @article.id %>">
             <%= render 'public/favorites/button', article: @article %></div>
           <td><div class = "unfavorite-btn-<%= @article.id %>">
             <%= render 'public/unfavorites/button', article: @article %></div>
           </td>
-          <td>
-            コメント件数：<%= @article.article_comments.count %>
-          </td>
 
           <% if @article.user == current_user %>
-            <td><%= link_to 'Edit', edit_article_path(@article), class: "btn btn-sm btn-success" %></td>
             <td><%= link_to 'Destroy', @article, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger"%></td>
           <% end %>
+        </tr>
+        <tr>
+          <td>コメント：<%= @article.article_comments.count %></td>
+        </tr>
+        <tr>
+          <td><%= @article.answer %></td>
         </tr>
       </table>
       <% @article.tags.each do |tag| %>

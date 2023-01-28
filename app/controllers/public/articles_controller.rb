@@ -6,7 +6,19 @@ class Public::ArticlesController < ApplicationController
 
   def show
     @article = Article.find(params[:id])
+    @genres = Genre.all
     @article_comment = ArticleComment.new
+
+    if params[:tag_ids]
+      @articles = []
+      params[:tag_ids].each do |key, value|
+        if value == "1"
+          tag_articles = Tag.find_by(name: key).articles
+          @articles = @articles.empty? ? tag_articles : @articles & tag_articles
+        end
+      end
+    end
+
   end
 
   def new
@@ -21,7 +33,6 @@ class Public::ArticlesController < ApplicationController
 
   def index
     @articles = Article.all
-    @article = Article.new
     @genres = Genre.all
 
     if params[:tag_ids]

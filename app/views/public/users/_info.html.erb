@@ -17,13 +17,11 @@
     <% end %>
     </th></tr>
     <tr>
-     <th>follows</th>
-     <th><%= link_to user_followings_path(user) do %><%= user.followings.count %><% end %></th>
+     <th>follows <%= link_to user_followings_path(user) do %><%= user.followings.count %><% end %>
+          followers <%= link_to user_followers_path(user) do %><%= user.followers.count %><% end %></th>
     </tr>
-    <tr>
-      <th>followers</th>
-      <th><%= link_to user_followers_path(user) do %><%= user.followers.count %><% end %></th>
-    </tr>
+
+
     <tr><th>
       <% if user.id != current_user.id %>
         <% if current_user.following?(user) %>
