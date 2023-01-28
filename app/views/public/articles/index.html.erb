@@ -2,18 +2,18 @@
   <%= render 'public/searches/search' %>
 </div>
 <div class='container'>
-<div class='row'>
+<div class='row align-items-start'>
 <div class='col-md-3'>
   <h2>タグ検索</h2>
   <%= form_tag({controller:"articles",action:"index"}, method: :get) do %>
     <div class="d-flex flex-row flex-wrap">
       <% Tag.all.each do |t| %>
-        <div>
+        <div class="mb-1 mr-2">
           <%= check_box :tag_ids, t.name %><%= t.name %>(<%= t.articles.count %>)
         </div>
       <% end %>
     </div>
-    <%= submit_tag '検索' %>
+    <div class="d-flex justify-content-end"><%= submit_tag '検索' %></div>
   <% end %>
 
   <%= render 'public/genres/search', genres: @genres %>
