@@ -11,17 +11,16 @@ class User < ApplicationRecord
   # フォローをした、されたの関係
   has_many :relationships, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy
   has_many :reverse_of_relationships, class_name: "Relationship", foreign_key: "followed_id", dependent: :destroy
-
   # 一覧画面で使う
   has_many :followings, through: :relationships, source: :followed
   has_many :followers, through: :reverse_of_relationships, source: :follower
 
   validates :nickname, length: { maximum: 20 }, uniqueness: true, presence: true
+  validates :introduction, length: { maximum: 200 }
 
     # フォローしたときの処理
   def follow(user_id)
-    #byebug
-    relationships.create!(followed_id: user_id)
+    relationships.create(followed_id: user_id)
   end
   # フォローを外すときの処理
   def unfollow(user_id)
@@ -40,7 +39,8 @@ class User < ApplicationRecord
     end
   end
 
+  #検索された単語を引数に、投稿を探すメソッド
   def self.looks(word)
     @user = User.where("nickname LIKE?","%#{word}%")
-   end
+  end
 end

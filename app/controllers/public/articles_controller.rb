@@ -12,18 +12,18 @@ class Public::ArticlesController < ApplicationController
       render :new
     end
   end
-  
+
   def create
     @article = Article.new(article_params)
     @article.user_id = current_user.id
-    if @article.save!
+    if @article.save
       redirect_to article_path(@article), notice: "投稿に成功しました"
     else
       @articles = Article.all
       render 'new', notice: "投稿に失敗しました"
     end
   end
-  
+
   def show
     @article = Article.find(params[:id])
     @genres = Genre.all
@@ -60,7 +60,7 @@ class Public::ArticlesController < ApplicationController
     @article.destroy
     redirect_to articles_path , notice: '投稿を削除しました'
   end
-  
+
   private
 
   def article_params
