@@ -15,10 +15,11 @@ class Public::FavoritesController < ApplicationController
     redirect_to request.referer
   end
 
+  #ゲストユーザーのコメントを制限
   def ensure_guest_user
     @user = current_user
     if @user.nickname == "guestuser"
-      redirect_to request.referer , notice: 'ゲストは投稿を評価できません。'
+      redirect_to request.referer , notice: 'ゲストは投稿を評価できません'
     end
   end
 

@@ -16,13 +16,14 @@ class Public::UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
+    #ゲストユーザーの変更を防ぎ、and returnで以降の処理を中止する
     if @user.nickname == "guestuser"
-      flash[:notice] = "ゲストはニックネームを変更できません"
+      flash[:notice] = "ゲストはユーザー情報を変更できません"
       redirect_to request.referer and return
     end
     @user.update(user_params)
     if @user.save
-      flash[:notice] = "ニックネームが変更されました"
+      flash[:notice] = "ユーザー情報が変更されました"
       redirect_to request.referer
     else
       flash[:notice] = "ニックネームを入力してください。"
@@ -60,6 +61,7 @@ class Public::UsersController < ApplicationController
     params.require(:user).permit(:nickname, :introduction)
   end
 
+  #ユーザーがログインしているユーザーか確認
   def is_matching_login_user
     user_id = params[:id].to_i
    login_user_id = current_user.id
@@ -68,6 +70,7 @@ class Public::UsersController < ApplicationController
     end
   end
 
+  #ゲストユーザーのコメントを制限
   def ensure_guest_user
     @user = User.find(params[:id])
     if @user.nickname == "guestuser"

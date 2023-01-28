@@ -1,5 +1,6 @@
 class Public::UnfavoritesController < ApplicationController
   before_action :ensure_guest_user
+  
   def create
     article = Article.find(params[:article_id])
     @unfavorite = current_user.unfavorites.new(article_id: article.id)
@@ -14,6 +15,7 @@ class Public::UnfavoritesController < ApplicationController
     redirect_to request.referer
   end
 
+  #ゲストユーザーのいいねを制限
   def ensure_guest_user
     @user = current_user
     if @user.nickname == "guestuser"
