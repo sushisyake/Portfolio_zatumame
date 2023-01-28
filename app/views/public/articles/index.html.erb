@@ -5,32 +5,34 @@
 <div class='row'>
 <div class='col-md-3'>
   <h2>タグ検索</h2>
-  <div class='border'>
   <%= form_tag({controller:"articles",action:"index"}, method: :get) do %>
-    <% Tag.all.each do |t| %>
-        <ul><%= check_box :tag_ids, t.name %><%= t.name %></ul>
-    <% end %>
+    <div class="d-flex flex-row flex-wrap">
+      <% Tag.all.each do |t| %>
+        <div>
+          <%= check_box :tag_ids, t.name %><%= t.name %>(<%= t.articles.count %>)
+        </div>
+      <% end %>
+    </div>
     <%= submit_tag '検索' %>
-  </div>
   <% end %>
 
   <%= render 'public/genres/search', genres: @genres %>
 </div>
 
-<div class='col-md-8 offset-md-1'>
+<table class='col-md-8 offset-md-1 table-striped'>
  <% @articles.each do |article| %>
-          <div class="mx-3 my-3">
+          <tr class="mx-3 my-3"><td>
             <%= link_to article_path(article) do %>
             <%= article.question %>
             <% end %>
             <div class = "d-flex justify-content-end">
               <%= render 'public/favorites/button', article: article %>
               <%= render 'public/unfavorites/button', article: article %>
-            </div>
+            </div></td>
 
-          </div>
+          </tr>
         <% end %>
-        <p style="font-size:15px; line-height: 2;">(全<%= @articles.count %>件)</p>
-    </div>
+        <tr style="font-size:15px; line-height: 2;"><td>(全<%= @articles.count %>件)</td></tr>
+    </table>
   </div>
 </div>

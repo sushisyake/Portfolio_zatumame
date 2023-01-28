@@ -39,8 +39,7 @@ class Public::ArticlesController < ApplicationController
   def create
     @article = Article.new(article_params)
     @article.user_id = current_user.id
-    #@article.genre_id = 1122
-    if @article.save
+    if @article.save!
       redirect_to article_path(@article), notice: "You have created article successfully."
     else
       @articles = Article.all

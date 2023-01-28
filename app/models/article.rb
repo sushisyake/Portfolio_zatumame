@@ -9,7 +9,7 @@ class Article < ApplicationRecord
   has_many :article_tag_relations, dependent: :destroy
   #articlesテーブルから中間テーブルを介してTagsテーブルへの関連付け
   has_many :tags, through: :article_tag_relations, dependent: :destroy
-
+  
   validates :question, presence:true
   
   def favorited_by?(user)
