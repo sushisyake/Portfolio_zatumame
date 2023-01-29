@@ -1,15 +1,11 @@
-<h2>Results index</h2>
-
-<table class="table table-hover table-inverse">
+<div class="d-flex justify-content-end mt-3 mr-5">
+    <%= render 'public/searches/search' %>
+</div>
+<h4 class="text-center">検索結果</h4>
+<table class="table table-hover table-inverse table w-75 mx-auto table-striped ">
   <!--検索対象モデルがUserの時 -->
   <% if @range == "User" %>
-    <tbody>
-      <% @users.each do |user| %>
-        <tr>
-          <td><%= user.nickname %></td>
-        </tr>
-      <% end %>
-    </tbody>
+     <%= render 'public/users/list',users: @users %>
   <% else %>
     <!--検索対象モデルがUserではない時(= 検索対象モデルがarticleの時) -->
     <tbody>

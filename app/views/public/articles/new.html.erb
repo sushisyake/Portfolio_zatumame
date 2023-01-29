@@ -4,18 +4,18 @@
 <div class='col-md-3'>
   <div class='border'>
   <%= form_with model: @article, url:articles_path, method: :post do |f| %>
-            <div class="form-group">
-              <label class="control-label">タグ選択</label>
-                <p> <%= f.collection_check_boxes(:tag_ids, Tag.all, :id, :name) do |tag| %>
-                  <div class='form-check border'>
+          <h6 class='mt-1 ml-1 '>タグ選択</h6>
+            <div class="form-group d-flex flex-row flex-wrap">
+                <%= f.collection_check_boxes(:tag_ids, Tag.all, :id, :name) do |tag| %>
+                  <div class='form-check mb-1 mr-2 '>
                     <%= tag.label class: 'form-check-label' do %>
                       <%= tag.check_box class: 'form-check-input' %>
                       <%= tag.text %>
                     <% end %>
                   </div>
-                  <% end %>
-                </p>
+                <% end %>
             </div>
+
             <div class="form-group">
               <label class="control-label">問題</label>
               <p><%= f.text_field :question %></p>

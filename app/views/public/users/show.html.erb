@@ -3,10 +3,6 @@
     <div class='col-md-3'>
       <h2>user info</h2>
       <%= render 'info', user: @user %>
-      <%=link_to"お気に入り記事",favorites_user_path(@user) %><br>
-      <% if @user.id == current_user.id %>
-        <%= link_to "退会する", confirm_path(@user) %>
-      <% end %>
     </div>
     <table class='col-md-8 offset-md-1 table-striped'>
       <% @articles.each do |article| %>

@@ -1,12 +1,9 @@
-<div class="d-flex justify-content-end mt-3 mr-5">
-<br>
-</div>
-<div class='container'>
-<div class='row'>
-<div class='col-md-3'>
-  <h2>user info</h2>
-  <%= render 'public/users/info', user: @user %>
-</div>
+<div class='container my-5'>
+  <div class='row align-items-start'>
+    <div class='col-md-3'>
+      <h2>user info</h2>
+      <%= render 'info', user: @user %>
+    </div>
 <div class='col-md-8 offset-md-1'>
   <% @favorite_articles.each do |article|%>
     <%= link_to article.question, article_path(article) %>

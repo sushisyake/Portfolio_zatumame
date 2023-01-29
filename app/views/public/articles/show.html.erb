@@ -12,7 +12,7 @@
   		<h2>投稿</h2>
   		<table class='table'>
   		  <tr>
-  		    <td><%= link_to @article.question, @article %></td>
+  		    <td><%= @article.question %></td>
           <td><%= @article.genre.name %></td>
           <td><% @article.tags.each do |tag| %>
                 <%= tag.name %>
@@ -22,29 +22,37 @@
             <%= @article.user.nickname %>
             <% end %>
           </td>
-          <td><div class = "favorite-btn-<%= @article.id %>">
-            <%= render 'public/favorites/button', article: @article %></div>
-          <td><div class = "unfavorite-btn-<%= @article.id %>">
-            <%= render 'public/unfavorites/button', article: @article %></div>
-          </td>
 
           <% if @article.user == current_user %>
             <td><%= link_to 'Destroy', @article, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger"%></td>
           <% end %>
         </tr>
         <tr>
-          <td>コメント(100文字まで)：<%= @article.article_comments.count %></td>
+          <td class="panel-group" style="border:none;">
+              <h6>
+                <a data-toggle="collapse" href="#collapse1">答えを見る</a>
+              </h6>
+              <div id="collapse1" class="panel-collapse collapse">
+                <div><%= @article.answer %></div>
+              </div>
+          </td>
         </tr>
         <tr>
-          <td><%= @article.answer %></td>
+          <td>コメント(100文字まで)：<%= @article.article_comments.count %></td>
+          <td>
+            <%= render 'public/favorites/button', article: @article %>
+            <%= render 'public/unfavorites/button', article: @article %>
+          </td>
         </tr>
       </table>
       <% @article.tags.each do |tag| %>
         <span><%= tag.name %></span>
       <% end %>
       <table>
-        <tr><td>
-          <div id =  "com-field" ><%= render 'public/article_comments/article-com', article: @article %></div></td>
+        <tr>
+          <td>
+            <div id =  "com-field" ><%= render 'public/article_comments/article-com', article: @article %></div>
+          </td>
         </tr>
           <%= render 'public/article_comments/article-com-new', article: @article, article_comment: @article_comment %>
       </table>

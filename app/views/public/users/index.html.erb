@@ -1,22 +1,3 @@
 <table class='table w-75 mx-auto table-striped '>
-  <thead>
-    <tr>
-      <th>name</th>
-      <th>intro</th>
-      <th colspan="4"></th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @users.each do |user| %>
-      <tr>
-        <td><%= link_to user.nickname, user %></td>
-        <td><%= truncate(user.introduction, length:30) %></td>
-        <td><% if current_user.following?(user) %>
-              フォロー中
-            <% else %>
-              未フォロー
-            <% end %></td>
-      </tr>
-    <% end %>
-  </tbody>
+  <%= render 'public/users/list',users: @users %>
 </table>
