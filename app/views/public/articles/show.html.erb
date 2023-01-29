@@ -5,17 +5,7 @@
   <div class='row'>
     <div class='col-md-3'>
       <h2>タグ検索</h2>
-      <%= form_tag({controller:"articles",action:"index"}, method: :get) do %>
-        <div class="d-flex flex-row flex-wrap">
-          <% Tag.all.each do |t| %>
-            <div>
-              <%= check_box :tag_ids, t.name %><%= t.name %>(<%= t.articles.count %>)
-            </div>
-          <% end %>
-        </div>
-        <%= submit_tag '検索' %>
-      <% end %>
-
+      <%= render 'public/tags/search' %>
       <%= render 'public/genres/search', genres: @genres %>
     </div>
     <div class='col-md-8 offset-md-1'>

@@ -44,3 +44,9 @@ Tag.create([
   { name: 'タグ4' },
   { name: 'タグ5' }
 ])
+
+5.times do |n|
+  article = Article.new(question: "投稿#{n + 1}", answer: "解答#{n + 1}", user_id: n + 1, genre_id: n + 1)
+  article.article_tag_relations.new(article_id: n + 1, tag_id: n + 1)
+  article.save!
+end

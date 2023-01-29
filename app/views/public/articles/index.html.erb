@@ -2,21 +2,11 @@
   <%= render 'public/searches/search' %>
 </div>
 <div class='container'>
-<div class='row align-items-start'>
-<div class='col-md-3'>
-  <h2>タグ検索</h2>
-  <%= form_tag({controller:"articles",action:"index"}, method: :get) do %>
-    <div class="d-flex flex-row flex-wrap">
-      <% Tag.all.each do |t| %>
-        <div class="mb-1 mr-2">
-          <%= check_box :tag_ids, t.name %><%= t.name %>(<%= t.articles.count %>)
-        </div>
-      <% end %>
-    </div>
-    <div class="d-flex justify-content-end"><%= submit_tag '検索' %></div>
-  <% end %>
-
-  <%= render 'public/genres/search', genres: @genres %>
+  <div class='row align-items-start'>
+    <div class='col-md-3'>
+      <h2>タグ検索</h2>
+    <%= render 'public/tags/search' %>
+    <%= render 'public/genres/search', genres: @genres %>
 </div>
 
 <table class='col-md-8 offset-md-1 table-striped'>
@@ -34,7 +24,7 @@
         <% end %>
 
         <tr style="font-size:15px; line-height: 2;"><td><%= paginate @articles %></td></tr>
-        <tr style="font-size:15px; line-height: 2;"><td>(全<%= @articles.count %>件)</td></tr>
+        <tr style="font-size:15px; line-height: 2;"><td>(全<%= @articles_count %>件)</td></tr>
     </table>
   </div>
 </div>

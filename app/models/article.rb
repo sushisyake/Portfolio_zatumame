@@ -10,7 +10,7 @@ class Article < ApplicationRecord
   has_many :tags, through: :article_tag_relations, dependent: :destroy
 
   validates :question, presence:true, length: { maximum: 200 }
-  validates :answer, presence:true, length: { maximum: 200 }
+  validates :answer, length: { maximum: 200 }
 
   #ログイン中のユーザーに高評価されているか
   def favorited_by?(user)

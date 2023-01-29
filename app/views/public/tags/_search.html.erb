@@ -1,0 +1,10 @@
+<%= form_tag({controller:"articles",action:"index"}, method: :get) do %>
+  <div class="d-flex flex-row flex-wrap">
+    <% Tag.all.each do |t| %>
+      <div class="mb-1 mr-2">
+        <%= check_box :tag_ids, t.id %><%= t.name %>(<%= t.articles.count %>)
+      </div>
+    <% end %>
+  </div>
+  <div class="d-flex justify-content-end"><%= submit_tag '検索' %></div>
+<% end %>
