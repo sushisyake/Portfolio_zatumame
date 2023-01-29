@@ -1,0 +1,16 @@
+<table class='table'>
+  <tbody>
+    <tr>
+      <th>
+          <%= user.nickname %>
+          <%= user.introduction %>
+      </th>
+    </tr>
+    <tr>
+      <th>
+        follows <%= user.followings.count %>
+         &emsp; followers <%= user.followers.count %>
+      </th>
+    </tr>
+  </tbody>
+</table>

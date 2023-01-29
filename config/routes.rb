@@ -38,10 +38,10 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
 
   namespace :admin do
     root to:'homes#top'
-    resources:users, only: [:edit, :index, :update]
-    resources:genres, only: [:index, :create, :edit, :update]
-    resources:articles, only: [:index, :show, :edit] do
-      resources :article_comments, only: [:create,:destroy]
+    resources:users, only: [:edit, :index, :update, :show]
+    resources:genres, only: [:index, :create, :edit, :update, :show]
+    resources:articles, only: [:index, :show, :destroy] do
+      resources :article_comments, only: [:destroy]
     end
   end
 
