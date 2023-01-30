@@ -1,4 +1,8 @@
 <% genres.each do |genre|%>
-  <div><%= link_to genre.name, genre_path(genre.id)%></div>
+  <% if user_signed_in?%>
+    <div><%= link_to genre.name, genre_path(genre.id)%></div>
+  <% elsif admin_signed_in? %>
+    <div><%= link_to genre.name, admin_genre_path(genre.id)%></div>
+  <% end %>
 <% end %>
 

@@ -23,7 +23,7 @@
             コメント件数：<%= @article.article_comments.count %>
           </td>
           <td>
-            <%= link_to 'Destroy', @article, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger"%>
+            <%= link_to 'Destroy', admin_article_path(@article), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger"%>
           </td>
         </tr>
         <tr>
