@@ -20,4 +20,4 @@ class Public::GenresController < ApplicationController
       @articles = Article.all.page(params[:page])
     end
   end
-  end
+end
