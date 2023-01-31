@@ -1,3 +1,4 @@
+<h2>タグ検索</h2>
 <%= form_tag({controller:"articles",action:"index"}, method: :get) do %>
   <div class="d-flex flex-row flex-wrap">
     <% Tag.all.each do |t| %>

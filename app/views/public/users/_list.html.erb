@@ -10,11 +10,13 @@
     <tr>
       <td><%= link_to user.nickname, user %></td>
       <td><%= truncate(user.introduction, length:30) %></td>
-      <td><% if current_user.following?(user) %>
-            フォロー中
-          <% else %>
-            未フォロー
-          <% end %></td>
+      <td>
+        <% if current_user.following?(user) %>
+          フォロー中
+        <% else %>
+          未フォロー
+        <% end %>
+      </td>
     </tr>
   <% end %>
 </tbody>

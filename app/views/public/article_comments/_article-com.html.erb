@@ -1,10 +1,9 @@
 <% article.article_comments.each do |article_comment| %>
-    <%= article_comment.comment %>
-    <% if article_comment.user == current_user %>
-      <p class="d-flex justify-content-end">
-        <%= article_comment.user.nickname %> &emsp;
-        <%= link_to 'Destroy', article_article_comment_path(article_comment.article, article_comment), remote: true, method: :delete, class: "btn btn-sm btn-danger"%>
-      </p>
-    <% end %>
-
+  <%= article_comment.comment %>
+  <% if article_comment.user == current_user %>
+    <p class="d-flex justify-content-end">
+      <%= article_comment.user.nickname %> &emsp;
+      <%= link_to 'Destroy', article_article_comment_path(article_comment.article, article_comment), remote: true, method: :delete, class: "btn btn-sm btn-danger"%>
+    </p>
+  <% end %>
 <% end %>

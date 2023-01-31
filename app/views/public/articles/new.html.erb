@@ -1,11 +1,11 @@
 <h1 class = "text-center">新規投稿</h1>
 <div class='container'>
-<div class='row'>
-<div class='col-md-3'>
-  <div class='border'>
-  <%= form_with model: @article, url:articles_path, method: :post do |f| %>
+  <div class='row'>
+    <div class='col-md-3'>
+      <div class='border'>
+        <%= form_with model: @article, url:articles_path, method: :post do |f| %>
           <h6 class='mt-1 ml-1 '>タグ選択</h6>
-            <div class="form-group d-flex flex-row flex-wrap">
+            <div class="d-flex flex-row flex-wrap">
                 <%= f.collection_check_boxes(:tag_ids, Tag.all, :id, :name) do |tag| %>
                   <div class='form-check mb-1 mr-2 '>
                     <%= tag.label class: 'form-check-label' do %>
@@ -15,52 +15,40 @@
                   </div>
                 <% end %>
             </div>
-
-            <div class="form-group">
-              <label class="control-label">問題</label>
-              <p><%= f.text_field :question %></p>
-            </div>
-            <div class="form-group">
-              <label class="control-label">答え</label>
-              <p><%= f.text_area :answer %></p>
-            </div>
-            <div class="form-group">
+            <div>
               <label class="control-label">ジャンル</label>
               <p><%= f.collection_select :genre_id, Genre.all, :id, :name, include_blank: "選択してください" %></p>
             </div>
-            <div class="form-group">
+            <div>
+              <label class="control-label">問題</label>
+              <p><%= f.text_field :question %></p>
+            </div>
+            <div>
+              <label class="control-label">答え</label>
+              <p><%= f.text_area :answer %></p>
+            </div>
+            <div>
               <%= f.submit '投稿' %>
             </div>
             <% end %>
-</div>
-</div>
+      </div>
+    </div>
 
   <div class='col-md-8 offset-md-1'>
-
-    <div class="my-3">Step1
-      <div >タグとジャンルを決めてください(ジャンルは必ず１つ指定してください)</div>
-      <div class="d-flex">タグの追加はこちら(20文字)
-      <%= form_tag({controller:"articles",action:"new"}, method: :get) do %>
-      <%= text_field_tag :tag %>
-      <%= submit_tag 'タグを追加' %>
-      <% end %>
+    <div class="my-3">Step1<br>
+      タグとジャンルを決めてください(ジャンルは必ず１つ指定してください)
+      <div class="d-flex mt-1">タグの追加はこちら(20文字)
+        <%= form_tag({controller:"articles",action:"new"}, method: :get) do %>
+        <%= text_field_tag :tag %>
+        <%= submit_tag 'タグを追加' %>
+        <% end %>
       </div>
-
     </div>
-    <div class="my-3">Step2
-      <div>問題を入力してください(必須 200文字まで)</div>
-    <div class="my-3">Step3
-      <div>答えを入力してください(任意 200文字まで)</div>
-    <div class="my-3">Step4
-      <div>投稿ボタンを押すと、投稿が完了します</div>
+    <div class="my-3">Step2<br>
+      問題を入力してください(必須 200文字まで)</div>
+    <div class="my-3">Step3<br>
+      答えを入力してください(任意 200文字まで)</div>
+    <div class="my-3">Step4<br>
+      投稿ボタンを押すと、投稿が完了します</div>
   </div>
 </div>
-
-
-
-
-
-
-<!-- 以下を追記 -->
-
-<!-- ここまで -->

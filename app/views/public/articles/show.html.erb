@@ -1,10 +1,7 @@
-<div class="d-flex justify-content-end mt-3 mr-5">
-  <%= render 'public/searches/search' %>
-</div>
+<%= render 'public/searches/search' %>
 <div class='container'>
   <div class='row'>
     <div class='col-md-3'>
-      <h2>タグ検索</h2>
       <%= render 'public/tags/search' %>
       <%= render 'public/genres/search', genres: @genres %>
     </div>
@@ -22,16 +19,13 @@
             <%= @article.user.nickname %>
             <% end %>
           </td>
-
           <% if @article.user == current_user %>
             <td><%= link_to 'Destroy', @article, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger"%></td>
           <% end %>
         </tr>
         <tr>
           <td class="panel-group" style="border:none;">
-              <h6>
-                <a data-toggle="collapse" href="#collapse1">答えを見る</a>
-              </h6>
+            <a data-toggle="collapse" href="#collapse1">答えを見る</a>
               <div id="collapse1" class="panel-collapse collapse">
                 <div><%= @article.answer %></div>
               </div>
