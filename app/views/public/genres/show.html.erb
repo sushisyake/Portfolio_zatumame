@@ -2,7 +2,6 @@
 <div class='container'>
   <div class='row align-items-start'>
     <div class='col-md-3'>
-      <h2>タグ検索</h2>
       <%= render 'public/tags/search' %>
       <%= render 'public/genres/search', genres: @genres %>
     </div>
@@ -11,7 +10,7 @@
         <tr class="mx-3 my-3">
           <td>
             <%= link_to article_path(article) do %>
-            <%= article.question %>
+              <%= article.question %>
             <% end %>
             <div class = "d-flex justify-content-end">
               <%= render 'public/favorites/button', article: article %>

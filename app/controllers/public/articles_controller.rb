@@ -32,17 +32,25 @@ class Public::ArticlesController < ApplicationController
 
   def index
     @genres = Genre.all
-    #タグ検索のための処理
+    #タグ検索のための処理もし検索がかけられたなら
     if params[:tag_ids].present?
+      #チェックボックスの状態(0or1から1)を抽出
       tag_ids = params[:tag_ids].select{|key, value| value == "1"}.keys
     end
+    #チェックされているのがあれば↓
     if tag_ids.present? && tag_ids[0].present?
+      #チェックされたidのアーティクルを抽出
       @articles = Tag.find(tag_ids[0]).articles
+      #抽出が終わったのを消す
       tag_ids.delete_at(0)
+      #残った一覧にも同じ検索をかける
       tag_ids.each do |tag_id|
+                   #最初の数値 ＆ 今回の新しい値
         @articles = @articles & Tag.find(tag_id).articles
       end
+      #算出された個数を取得する専用の定義
       @articles_count = @articles.count
+      #アクティブレコードではない配列をキャスト(変換)
       @articles = Kaminari.paginate_array(@articles).page(params[:page])
     else
       @articles_count = Article.all.count

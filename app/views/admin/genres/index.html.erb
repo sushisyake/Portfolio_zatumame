@@ -6,7 +6,6 @@
 <div class="container">
   <% if @genre.errors.any? %>
     <tr>
-      <td></td>
       <td>
         <%= @genre.errors.count %>件のエラーが発生しました
         <ul class="list-group list-unstyled">
@@ -19,11 +18,9 @@
   <% end %>
   <div class="mt-4">
     <div class="col-md-8">
-
       <h4><span class="bg-light">ジャンル一覧・追加<span></h4>
       <div class="mt-4">
         <!--ジャンル名登録フォーム-->
-
           <%= form_with model: @genre, url: admin_genres_path, local:true do |f| %>
           <ul class="d-flex">
             <li class="mr-5"><%= f.label :name, 'ジャンル名' %></li>
@@ -31,9 +28,7 @@
             <li><%= f.submit '新規登録', class:"btn btn-sm btn-success pt-1 pb-1 px-4" %></li>
           </ul>
           <% end %>
-
       </div>
-
       <!--既に登録されているジャンルのリスト-->
       <div class="col-8 mt-4">
         <table class="table">

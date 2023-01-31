@@ -12,60 +12,61 @@
 
   <body>
     <header>
-<!-- ナビゲーションバー -->
-    <nav class="navbar navbar-expand-md navbar-light bg-light ">
-      <a class="navbar-brand">Zatumame</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <div class="ml-auto mr-auto">
-        <ul class="navbar-nav center-block text-center">
-        <% if user_signed_in? %>
-          <li class="nav-item my-2 mx-3 h5">
-            <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
-          </li>
-          <li class="nav-item my-2 mx-3 h5">
-            <%= link_to "投稿", new_article_path %>
-          </li>
-          <li class="nav-item my-2 mx-3 h5">
-            <%= link_to "一覧", articles_path %>
-          </li>
-          <li class="nav-item my-2 mx-3 h5">
-            <%= link_to "マイページ", user_path(current_user)  %>
-          </li>
-          <li class="nav-item my-2 mx-3 h5">
-            <%= link_to "ユーザー", users_path  %>
-          </li>
-        <% elsif admin_signed_in? %>
-          <li class="nav-item my-2 mx-3 h5">
-            <%= link_to "投稿一覧", admin_articles_path %>
-          </li>
-          <li class="nav-item my-2 mx-3 h5">
-            <%= link_to "ユーザー一覧", admin_users_path %>
-          </li>
-          <li class="nav-item my-2 mx-3 h5">
-            <%= link_to "ジャンル一覧", admin_genres_path %>
-          </li>
-          <li class="nav-item my-2 mx-3 h5">
-            <%= link_to "ログアウト", destroy_admin_session_path, method: :delete %>
-          </li>
-        <% else %>
-          <li class="nav-item my-2 mx-3 h5">
-            <%= link_to 'ゲストログイン（閲覧用）', users_guest_sign_in_path, method: :post %>
-          </li>
-          <li class="nav-item my-2 mx-3 h5">
-            <%= link_to 'Log in',new_user_session_path %>
-          </li>
-          <li class="nav-item my-2 mx-3 h5">
-            <%= link_to 'Sign Up',new_user_registration_path %>
-          </li>
-        <% end %>
-        </ul>
+      <div class="shadow bg-light">
+      <nav class="navbar navbar-expand-md navbar-light">
+        <h3><%= link_to "Zatumame", root_path %></h3>
+        <!--↓ハンバーガーメニュー-->
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <div class="ml-auto mr-auto">
+          <ul class="navbar-nav center-block text-center">
+          <% if user_signed_in? %>
+            <li class="nav-item my-2 mx-3 h5">
+              <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+            </li>
+            <li class="nav-item my-2 mx-3 h5">
+              <%= link_to "投稿", new_article_path %>
+            </li>
+            <li class="nav-item my-2 mx-3 h5">
+              <%= link_to "一覧", articles_path %>
+            </li>
+            <li class="nav-item my-2 mx-3 h5">
+              <%= link_to "マイページ", user_path(current_user)  %>
+            </li>
+            <li class="nav-item my-2 mx-3 h5">
+              <%= link_to "ユーザー", users_path  %>
+            </li>
+          <% elsif admin_signed_in? %>
+            <li class="nav-item my-2 mx-3 h5">
+              <%= link_to "投稿一覧", admin_articles_path %>
+            </li>
+            <li class="nav-item my-2 mx-3 h5">
+              <%= link_to "ユーザー一覧", admin_users_path %>
+            </li>
+            <li class="nav-item my-2 mx-3 h5">
+              <%= link_to "ジャンル一覧", admin_genres_path %>
+            </li>
+            <li class="nav-item my-2 mx-3 h5">
+              <%= link_to "ログアウト", destroy_admin_session_path, method: :delete %>
+            </li>
+          <% else %>
+            <li class="nav-item my-2 mx-3 h5">
+              <%= link_to 'ゲストログイン（閲覧用）', users_guest_sign_in_path, method: :post %>
+            </li>
+            <li class="nav-item my-2 mx-3 h5">
+              <%= link_to 'Log in',new_user_session_path %>
+            </li>
+            <li class="nav-item my-2 mx-3 h5">
+              <%= link_to 'Sign Up',new_user_registration_path %>
+            </li>
+          <% end %>
+          </ul>
+          </div>
         </div>
+      </nav>
       </div>
-    </nav>
     </header>
     <%= flash[:notice] %>
     <%= yield %>

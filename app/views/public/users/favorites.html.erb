@@ -4,9 +4,9 @@
       <%= render 'info', user: @user %>
     </div>
     <div class='col-md-8 offset-md-1'>
-      <% @favorite_articles.each do |article|%>
-        <%= link_to article.question, article_path(article) %>
-      <% end %>
+      <table class='table mx-auto table-striped '>
+        <%= render 'public/articles/list', articles: @favorite_articles %>
+      </table>
     </div>
   </div>
 </div>

@@ -4,11 +4,9 @@
 <div class='container'>
   <div class='row align-items-start'>
     <div class='col-md-3'>
-      <h2>タグ検索</h2>
-        <%= render 'public/tags/search' %>
-        <%= render 'public/genres/search', genres: @genres %>
-      </div>
-
+      <%= render 'public/tags/search' %>
+      <%= render 'public/genres/search', genres: @genres %>
+    </div>
     <table class='col-md-8 offset-md-1 table-striped'>
       <% @genre.articles.each do |article| %>
         <tr class="mx-3 my-3">

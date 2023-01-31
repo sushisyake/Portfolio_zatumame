@@ -5,8 +5,7 @@ class Public::ArticleCommentsController < ApplicationController
     article = Article.find(params[:article_id])
     @comment = current_user.article_comments.new(article_comment_params)
     @comment.article_id = article.id
-    if
-      @comment.save
+    if @comment.save
       redirect_to request.referer, notice: 'コメントを投稿しました'
     else
       redirect_to request.referer, notice: 'コメントは100文字までです'
@@ -29,7 +28,7 @@ class Public::ArticleCommentsController < ApplicationController
   def ensure_guest_user
     @user = current_user
     if @user.nickname == "guestuser"
-      redirect_to article_path , notice: 'ゲストユーザーはコメントできません'
+      redirect_to article_path(params[:article_id]) , notice: 'ゲストユーザーはコメントできません'
     end
   end
 

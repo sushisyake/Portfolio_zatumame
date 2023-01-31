@@ -4,8 +4,14 @@
       <th>
         <% if user.id == current_user.id %>
           <%= form_with model: user, local:true do |f| %>
-            <%= f.label :nickname %>
-            <%= f.text_field :nickname, class: "form-control name" %>
+          <div class="form-group row">
+            <div class="col-sm-4 col-12">
+              <%= f.label :nickname %>
+            </div>
+            <div class="col-sm-8 col-12">
+              <%= f.text_field :nickname, class: "form-control name" %>
+            </div>
+          </div>
             <%= f.label :introduction %>
             <%= f.text_area :introduction, class: "form-control introduction" %><br>
             <%= f.submit class: 'btn btn-secondary' %>
@@ -18,8 +24,14 @@
     </tr>
     <tr>
       <th>
-        follows <%= link_to user_followings_path(user) do %><%= user.followings.count %><% end %>
-         &emsp; followers <%= link_to user_followers_path(user) do %><%= user.followers.count %><% end %>
+        follows
+        <%= link_to user_followings_path(user) do %>
+          <%= user.followings.count %>
+        <% end %> &emsp; 
+        followers
+        <%= link_to user_followers_path(user) do %>
+          <%= user.followers.count %>
+        <% end %>
       </th>
     </tr>
     <tr>

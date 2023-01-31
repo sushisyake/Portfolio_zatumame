@@ -1,0 +1,13 @@
+<% articles.each do |article| %>
+  <tr class="mx-3 my-3">
+    <td>
+      <%= link_to article_path(article) do %>
+      <%= article.question %>
+      <% end %>
+      <div class = "d-flex justify-content-end">
+        <%= render 'public/favorites/button', article: article %>
+        <%= render 'public/unfavorites/button', article: article %>
+      </div>
+    </td>
+  </tr>
+<% end %>
