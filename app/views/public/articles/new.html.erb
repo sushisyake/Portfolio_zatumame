@@ -1,4 +1,4 @@
-<h1 class = "text-center">新規投稿</h1>
+<h1 class = "text-center mt-3">新規投稿</h1>
 <div class='container'>
   <div class='row'>
     <div class='col-md-3'>
@@ -33,22 +33,22 @@
             <% end %>
       </div>
     </div>
-
-  <div class='col-md-8 offset-md-1'>
-    <div class="my-3">Step1<br>
-      タグとジャンルを決めてください(ジャンルは必ず１つ指定してください)
-      <div class="d-flex mt-1">タグの追加はこちら(20文字)
-        <%= form_tag({controller:"articles",action:"new"}, method: :get) do %>
-        <%= text_field_tag :tag %>
-        <%= submit_tag 'タグを追加' %>
-        <% end %>
+    <div class='col-md-8 offset-md-1'>
+      <div class="my-3">Step1<br>
+        タグとジャンルを決めてください(ジャンルは必ず１つ指定してください)
+        <div class="d-flex mt-1">タグの追加はこちら(20文字)
+          <%= form_tag({controller:"articles",action:"new"}, method: :get) do %>
+          <%= text_field_tag :tag %>
+          <%= submit_tag 'タグを追加' %>
+          <% end %>
+        </div>
       </div>
+      <div class="my-3">Step2<br>
+        問題を入力してください(必須 200文字まで)</div>
+      <div class="my-3">Step3<br>
+        答えを入力してください(任意 200文字まで)</div>
+      <div class="my-3">Step4<br>
+        投稿ボタンを押すと、投稿が完了します</div>
     </div>
-    <div class="my-3">Step2<br>
-      問題を入力してください(必須 200文字まで)</div>
-    <div class="my-3">Step3<br>
-      答えを入力してください(任意 200文字まで)</div>
-    <div class="my-3">Step4<br>
-      投稿ボタンを押すと、投稿が完了します</div>
   </div>
 </div>

@@ -4,19 +4,7 @@
       <%= render 'info', user: @user %>
     </div>
     <table class='col-md-8 offset-md-1 table-striped'>
-      <% @articles.each do |article| %>
-      <tr class="mx-3 my-3">
-        <td>
-          <%= link_to article_path(article) do %>
-            <%= article.question %>
-          <% end %>
-          <div class = "d-flex justify-content-end">
-            <%= render 'public/favorites/button', article: article %>
-            <%= render 'public/unfavorites/button', article: article %>
-          </div>
-        </td>
-      </tr>
-      <% end %>
+      <%= render 'public/articles/list', articles: @articles %>
       <tr style="font-size:15px; line-height: 2;"><td><%= paginate @articles %></td></tr>
       <tr style="font-size:15px; line-height: 2;"><td>(全<%= @user.articles.count %>件)</td></tr>
     </table>

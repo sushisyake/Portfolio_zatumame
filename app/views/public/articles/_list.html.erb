@@ -1,13 +1,25 @@
 <% articles.each do |article| %>
-  <tr class="mx-3 my-3">
-    <td>
+  <tr>
+    <td class="w-50">
       <%= link_to article_path(article) do %>
-      <%= article.question %>
+        <%= truncate(article.question, length:25) %>
       <% end %>
-      <div class = "d-flex justify-content-end">
-        <%= render 'public/favorites/button', article: article %>
-        <%= render 'public/unfavorites/button', article: article %>
+      <div class="text-right mr-3">
+        <%= article.genre.name %>
       </div>
+    </td>
+    <td class="d-flex flex-wrap">
+      <i class="fas fa-tags"></i>
+        <% article.tags.each do |tag| %>
+         <div class="d-flex ml-1">
+           <%= tag.name %>
+          </div>
+        <% end %>
+    </td>
+    <td>
+      <%= render 'public/favorites/button', article: article %>
+      <!--空白-->&nbsp;
+      <%= render 'public/unfavorites/button', article: article %>
     </td>
   </tr>
 <% end %>

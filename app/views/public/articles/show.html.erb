@@ -6,8 +6,27 @@
       <%= render 'public/genres/search', genres: @genres %>
     </div>
     <div class='col-md-8 offset-md-1'>
-  		<h2>投稿</h2>
-  		<table class='table'>
+  		<div class='row'>
+        <h2 class='col-2'>
+          投稿
+        </h2>
+        <div class='col-2 mt-2'>
+    		  <% if @article.user == current_user %>
+            <%= link_to 'Destroy', @article, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger"%>
+          <% end %>
+  		  </div>
+  		  <div class="col-4 mt-3">
+            <%= render 'public/favorites/button', article: @article %>
+            <%= render 'public/unfavorites/button', article: @article %>
+        </div>
+  		  <div class="col-4 mt-3">
+            <%= link_to(@article.user) do %>
+              <i class="fas fa-user"></i>
+              <%= @article.user.nickname %>
+            <% end %>
+        </div>
+      </div>
+      <table class='table'>
   		  <tr>
   		    <td>
   		      <%= @article.question %>
@@ -16,20 +35,11 @@
             <%= @article.genre.name %>
           </td>
           <td>
+            <i class="fas fa-tags"></i>
             <% @article.tags.each do |tag| %>
               <%= tag.name %>
             <% end %>
           </td>
-          <td>
-            <%= link_to(@article.user) do %>
-              <%= @article.user.nickname %>
-            <% end %>
-          </td>
-          <% if @article.user == current_user %>
-            <td>
-              <%= link_to 'Destroy', @article, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger"%>
-            </td>
-          <% end %>
         </tr>
         <% if @article.answer.present? %>
           <tr>
@@ -44,10 +54,8 @@
           </tr>
         <% end %>
         <tr>
-          <td>コメント件数：<%= @article.article_comments.count %>　(100文字まで)</td>
           <td>
-            <%= render 'public/favorites/button', article: @article %>
-            <%= render 'public/unfavorites/button', article: @article %>
+            コメント件数：<%= @article.article_comments.count %>　(100文字まで)
           </td>
         </tr>
       </table>
