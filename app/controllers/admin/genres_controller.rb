@@ -1,7 +1,7 @@
 class Admin::GenresController < ApplicationController
   before_action :authenticate_admin!
 
-   def show
+  def show
     @genres = Genre.all
     @genre = Genre.find(params[:id])
     #タグ検索のための処理

@@ -1,5 +1,6 @@
 class Admin::ArticlesController < ApplicationController
-
+  before_action :authenticate_admin!
+  
   def show
     @article = Article.find(params[:id])
     @genres = Genre.all

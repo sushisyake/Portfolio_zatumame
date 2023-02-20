@@ -31,11 +31,13 @@
      <dt><%= f.label :"パスワード（確認用）" %></dt>
      <dd><%= f.password_field :password_confirmation %></dd>
     </div>
-    <div class="actions d-flex justify-content-center">
+    <div class="field d-flex">
      <%= f.submit "新規登録",class:"btn btn-success pl-5 pr-5" %>
     </div>
-   <% end %>
+<% end %>
 
- <h4 class="mt-5"><span class="bg-light">既に登録済みの方</span></h4>
- <%= render "public/shared/links" %><p>からログインしてください。</p>
-</div>
+<h5 class="mt-5">
+ <span class="bg-light">
+  既に登録済みの方は<%= render "public/shared/links" %>からログインしてください。
+ </span>
+</h5>
