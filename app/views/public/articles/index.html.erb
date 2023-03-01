@@ -14,6 +14,7 @@
       </tr>
       <!--colspanで、背景色を画面端まで適用させる-->
       <tr style="font-size:15px; line-height: 2;">
+        <!--セルの結合-->
         <td colspan="3">
           (全<%= @articles_count %>件)
         </td>
@@ -25,7 +26,7 @@
       </tr>
       <% @all_favorite_ranks.each.with_index(1) do |article, i| %>
       <tr style="font-size:15px; line-height: 2;">
-        <td>
+        <td colspan="3">
           第<%= i %>位
           <%= link_to article_path(article) do %>
           <%= truncate(article.question, length:25) %>
