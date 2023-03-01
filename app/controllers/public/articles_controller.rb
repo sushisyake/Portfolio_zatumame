@@ -56,6 +56,7 @@ class Public::ArticlesController < ApplicationController
       @articles_count = Article.all.count
       @articles = Article.all.page(params[:page])
     end
+    @all_favorite_ranks = Article.find(Favorite.group(:article_id).order('count(article_id) desc').limit(3).pluck(:article_id))
   end
 
   def destroy
