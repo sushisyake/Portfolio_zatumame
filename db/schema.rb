@@ -45,7 +45,7 @@ ActiveRecord::Schema.define(version: 2023_01_23_132333) do
     t.integer "user_id", null: false
     t.integer "genre_id"
     t.string "question", null: false
-    t.string "answer", null: false
+    t.string "answer"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
