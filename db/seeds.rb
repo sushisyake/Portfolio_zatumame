@@ -65,5 +65,5 @@ Tag.create([
   article.save!
 
   article = Article.new(question: "洗濯機を使う時、重いものは上？下？", answer: "下。回転がよりスムーズになり、洗浄効率が向上します。", user_id: 2, genre_id: 1)
-  article.article_tag_relations.new(article_id: 7, tag_id: 1, tag_id: 1)
+  article.article_tag_relations.new(article_id: 7, tag_id: 1)
   article.save!
