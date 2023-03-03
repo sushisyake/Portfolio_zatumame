@@ -16,8 +16,12 @@
           <% end %>
   		  </div>
   		  <div class="col-4 mt-3">
+  		    <div class = "favorite-btn-<%= @article.id %>">
             <%= render 'public/favorites/button', article: @article %>
+          </div>
+          <div class = "unfavorite-btn-<%= @article.id %>">
             <%= render 'public/unfavorites/button', article: @article %>
+          </div>
         </div>
   		  <div class="col-4 mt-3">
             <%= link_to(@article.user) do %>

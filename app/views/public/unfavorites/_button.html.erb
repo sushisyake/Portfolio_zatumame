@@ -1,9 +1,9 @@
 <% if article.unfavorited_by?(current_user) %>
-  <%= link_to article_unfavorites_path(article), method: :delete do %>
+  <%= link_to article_unfavorites_path(article),remote:true, method: :delete do %>
     <i class="fas fa-thumbs-down"></i><%= article.unfavorites.count %>
   <% end %>
 <% else %>
-  <%= link_to article_unfavorites_path(article), method: :post do %>
+  <%= link_to article_unfavorites_path(article),remote:true, method: :post do %>
     <i class="far fa-thumbs-down"></i><%= article.unfavorites.count %>
   <% end %>
 <% end %>
