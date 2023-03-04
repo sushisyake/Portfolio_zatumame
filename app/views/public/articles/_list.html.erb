@@ -17,9 +17,12 @@
         <% end %>
     </td>
     <td>
-      <%= render 'public/favorites/button', article: article %>
-      <!--空白-->&nbsp;
-      <%= render 'public/unfavorites/button', article: article %>
+      <span class = "favorite-btn-<%= article.id %>">
+        <%= render 'public/favorites/button', article: article %>
+      </span> <!--空白-->&nbsp;
+      <span class = "unfavorite-btn-<%= article.id %>">
+        <%= render 'public/unfavorites/button', article: article %>
+      </span>
     </td>
   </tr>
 <% end %>

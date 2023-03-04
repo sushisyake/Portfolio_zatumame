@@ -1,18 +1,21 @@
 class Public::UnfavoritesController < ApplicationController
   before_action :ensure_guest_user
-  
+
   def create
-    article = Article.find(params[:article_id])
-    @unfavorite = current_user.unfavorites.new(article_id: article.id)
+    @article = Article.find(params[:article_id])
+    @unfavorite = current_user.unfavorites.new(article_id: @article.id)
     @unfavorite.save
-    redirect_to request.referer
+    # 非同期通信でrenderやredirect_toを使うと、
+    # index.html.erbではなくindex.js.erbを探してしまう。
+    # これらを書かない場合は、アクション名.js.erbが必要。(create.js.erbなど)
+    # redirect_to request.referer
   end
 
   def destroy
-    article = Article.find(params[:article_id])
-    @unfavorite = current_user.unfavorites.find_by(article_id: article.id)
+    @article = Article.find(params[:article_id])
+    @unfavorite = current_user.unfavorites.find_by(article_id: @article.id)
     @unfavorite.destroy
-    redirect_to request.referer
+    # redirect_to request.referer
   end
 
   #ゲストユーザーのいいねを制限
