@@ -5,16 +5,34 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
+  <body class="about-img">
 
-  <body>
-    <header>
-      <div class="shadow bg-light">
-      <nav class="navbar navbar-expand-md navbar-light">
-        <h3><%= link_to "Zatumame", root_path %></h3>
+    <style>
+      .table-striped tbody tr:nth-of-type(odd) {
+            background-color: rgba(0, 0, 0, 0.02);
+        }
+
+        .about-img{
+          background-image: url("assets/app-img.png");
+        }
+
+        header{
+          background-image: url("assets/background.png");
+        }
+
+        header img{
+          width:150px;
+        }
+    </style>
+
+    <header class="shadow">
+      <nav class="navbar navbar-expand-md w-75 mx-auto">
+        <div>
+          <%= link_to image_tag("logo.png"), root_path %>
+        </div>
         <!--↓ハンバーガーメニュー-->
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -66,10 +84,9 @@
           </div>
         </div>
       </nav>
-      </div>
     </header>
-    <%= flash[:notice] %>
-    <%= yield %>
+      <%= flash[:notice] %>
+      <%= yield %>
   </body>
 </html>
 
