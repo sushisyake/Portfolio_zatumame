@@ -1,2 +1,18 @@
 @import '~bootstrap/scss/bootstrap';
 @import '~@fortawesome/fontawesome-free/scss/fontawesome';
+
+.table-striped tbody tr:nth-of-type(odd) {
+    background-color: rgba(0, 0, 0, 0.02);
+}
+
+.background{
+  background-image: url("/background.png");
+}
+
+header{
+  background-image: url("/header.png");
+}
+
+img{
+  width:150px;
+}
