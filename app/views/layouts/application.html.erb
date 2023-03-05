@@ -7,27 +7,27 @@
     <%= csp_meta_tag %>
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
-  <body class="about-img">
-
     <style>
       .table-striped tbody tr:nth-of-type(odd) {
             background-color: rgba(0, 0, 0, 0.02);
         }
 
-        .about-img{
-          background-image: url("assets/app-img.png");
-        }
-
-        header{
+        .background{
           background-image: url("assets/background.png");
         }
 
-        header img{
+        header{
+          background-image: url("assets/header.png");
+        }
+
+        img{
           width:150px;
         }
-    </style>
 
+    </style>
+  </head>
+
+  <body class="background">
     <header class="shadow">
       <nav class="navbar navbar-expand-md w-75 mx-auto">
         <div>
@@ -85,8 +85,8 @@
         </div>
       </nav>
     </header>
-      <%= flash[:notice] %>
-      <%= yield %>
+    <div class="ml-5 mt-2"><%= flash[:notice] %></div>
+    <%= yield %>
   </body>
 </html>
 
