@@ -13,11 +13,3 @@
  *= require_tree .
  *= require_self
  */
- 
-.background{
-  background-image: image-url("/background.png");
-}
-
-header{
-  background-image: image-url("/header.png");
-}
