@@ -14,10 +14,11 @@
  *= require_self
  */
 
+
 .background{
-  background-image: url(<%= asset_path 'background.png' %>);
+  background-image: image-url("/background.png");
 }
 
 header{
-  background-image: url(<%= asset_path 'header.png' %>);
-}
+  background-image: image-url("/header.png");
+}*
