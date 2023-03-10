@@ -18,5 +18,6 @@ Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
 
+// app/javascript/stylesheetsにimage-urlは使えないのでurlで/favascript/imagesを参照
 const images = require.context('../images', true)
 const imagePath = (name) => images(name, true)

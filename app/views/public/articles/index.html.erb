@@ -5,35 +5,57 @@
       <%= render 'public/tags/search' %>
       <%= render 'public/genres/search', genres: @genres %>
     </div>
-    <table class='col-md-8 offset-md-1 table-striped'>
-      <%= render 'public/articles/list', articles: @articles %>
-      <tr style="font-size:15px; line-height: 2;">
-        <td colspan="3">
-          <%= paginate @articles %>
-        </td>
-      </tr>
-      <!--colspanで、背景色を画面端まで適用させる-->
-      <tr style="font-size:15px; line-height: 2;">
-        <!--セルの結合-->
-        <td colspan="3">
-          (全<%= @articles_count %>件)
-        </td>
-      </tr>
-      <tr>
-        <td class= "p-2">
-        いいね数ランキング！
-        </td>
-      </tr>
-      <% @all_favorite_ranks.each.with_index(1) do |article, i| %>
-      <tr style="font-size:15px; line-height: 2;">
-        <td colspan="3">
-          第<%= i %>位
-          <%= link_to article_path(article) do %>
-          <%= truncate(article.question, length:25) %>
+      <div class='col-md-8 offset-md-1 table-striped'>
+      <table style="width:100%;">
+        <%= render 'public/articles/list', articles: @articles %>
+        <tr style="font-size:15px; line-height: 2;">
+          <td colspan="3">
+            <%= paginate @articles %>
+          </td>
+        </tr>
+        <!--colspanで、背景色を画面端まで適用させる-->
+        <tr style="font-size:15px; line-height: 2;">
+          <!--セルの結合-->
+          <td colspan="3">
+            (全<%= @articles_count %>件)
+          </td>
+        </tr>
+      </table>
+
+        <table class='table-striped' style="width: 50%; display: inline-block;">
+          <tr>
+            <td class= "p-2">
+            いいね数ランキング！
+            </td>
+          </tr>
+          <% @all_favorite_ranks.each.with_index(1) do |article, i| %>
+          <tr style="font-size:15px; line-height: 2;">
+            <td colspan="3">
+              第<%= i %>位
+              <%= link_to article_path(article) do %>
+                <%= truncate(article.question, length:25) %>
+              <% end %>
+            </td>
+          </tr>
           <% end %>
-        </td>
-      </tr>
-      <% end %>
-    </table>
+        </table>
+        <table class='table-striped' style="width: 49%; display: inline-block;">
+          <tr>
+            <td class= "p-2">
+            いいね数ランキング！
+            </td>
+          </tr>
+          <% @all_favorite_ranks.each.with_index(1) do |article, i| %>
+          <tr style="font-size:15px; line-height: 2;">
+            <td colspan="3">
+              第<%= i %>位
+              <%= link_to article_path(article) do %>
+              <%= truncate(article.question, length:25) %>
+              <% end %>
+            </td>
+          </tr>
+          <% end %>
+        </table>
+    </div>
   </div>
 </div>

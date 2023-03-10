@@ -2,7 +2,7 @@
   <tr>
     <td class="w-50">
       <%= link_to article_path(article) do %>
-        <%= truncate(article.question, length:25) %>
+        <%= truncate(article.question, length:22) %>
       <% end %>
       <div class="text-right mr-3">
         <%= article.genre.name %>
